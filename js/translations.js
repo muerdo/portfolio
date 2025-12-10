@@ -52,7 +52,7 @@ const translations = {
         "cv_exp_title": "EXPERIÊNCIA PROFISSIONAL",
         "cv_role_1": "Cybersecurity Consultant",
         "cv_company_1": "Atuação Independente | 2024 - Presente",
-        "cv_desc_1": "Lidero engajamentos de pentest para clientes internacionais, focando na identificação de falhas lógicas e de infraestrutura crítica. Desenvolvo scripts personalizados para automação de OSINT e varredura de vulnerabilidades, além de assessorar times de Blue Team na remediação de findings críticos.",
+        "cv_desc_1": "Lidero engajamentos de pentest para clientes no ramo financeiro, hospitalar educacional e corporativo, focando na identificação de falhas lógicas e de infraestrutura crítica. Desenvolvo scripts personalizados para automação de OSINT e varredura de vulnerabilidades, além de assessorar times de Blue Team na remediação de findings críticos.",
         "cv_role_2": "Offensive Security Specialist",
         "cv_company_2": "IntruderLabs Offensive Security | 2024",
         "cv_desc_2": "Atuei na execução de testes de intrusão em ambientes de alta sensibilidade (Setor Financeiro e Saúde). Responsável pela descoberta e exploração segura de vulnerabilidades críticas (RCE, SQLi, AD Privilege Escalation), resultando na redução de 40% na superfície de ataque dos clientes atendidos.",

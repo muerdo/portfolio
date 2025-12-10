@@ -8,6 +8,12 @@ Antes de começar, você precisa conectar esta pasta a um repositório no GitHub
 
 1.  Crie um **novo repositório** no GitHub (ex: `portfolio-redrecon`).
 2.  Desmarque a opção "Initialize with README".
+    > [!IMPORTANT]
+    > **Atenção:** Para usar o GitHub Pages de graça, o repositório deve ser **PÚBLICO**.
+    > Se você mantiver o repositório como **Privado**, o GitHub cobrará (plano Pro) para ativar o Pages.
+    >
+    > **Alternativa para Repositório Privado:**
+    > Se você precisa manter o código privado mas o site público, use a **Vercel** ou **Netlify** (ambos gratuitos para repos privados).
 3.  No seu terminal (dentro da pasta do projeto), rode:
 
 ```bash
