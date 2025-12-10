@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review: Active Directory Red Team Specialist (AD-RTS) | RedRecon Blog</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .blog-header {
+            border-bottom: 2px solid var(--neon-green);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .blog-header h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .highlight-box {
+            background: rgba(10, 255, 10, 0.05);
+            border-left: 4px solid var(--neon-green);
+            padding: 20px;
+            margin: 30px 0;
+            color: #ddd;
+        }
+
+        .nav-back {
+            margin-bottom: 30px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+
+        article {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        h2 {
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--neon-green);
+            padding-left: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo" style="display:flex; align-items:center; gap:10px;">
+            <img src="../../img/redsec_alliance.png" alt="RedSec Logo" style="height:40px; width:auto;">
+            <div style="display:flex; flex-direction:column; line-height:1.1;">
+                <span class="user-name" style="font-size:1.2rem; letter-spacing:1px;">REDSEC INTELLIGENCE</span>
+                <span class="role" style="font-size:0.7rem; color:var(--text-muted);">OFFENSIVE SECURITY RESEARCH</span>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt" data-lang="pt" onclick="window.location.href='../../blog/ad-rts-review.html'"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                <span class="lang-opt active" data-lang="en"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
+            </div>
+            <div class="toggle-group">
+                <button id="theme-toggle" class="btn-toggle">HACKER_MODE</button>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">DASHBOARD</a>
+                <a href="../../library.html">LIBRARY</a>
+                <a href="../../blog.html">BLOG</a>
+                <a href="../../profile.html" data-i18n="nav_about">PROFILE</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../../blog.html">← BACK TO BLOG</a>
+        </div>
+
+        <article>
+            <header class="blog-header">
+                <h1>Active Directory Red Team Specialist (AD-RTS): Building Offensive Expertise in 2025</h1>
+                <div style="color: var(--text-muted); font-family: var(--font-code); font-size: 0.9rem;">
+                    <span>CERTIFICATION REVIEW</span> | <span>10 MIN READ</span>
+                </div>
+            </header>
+
+            <div class="highlight-box">
+                <strong>Overview:</strong> The AD-RTS certification focuses on offensive strategies in Windows
+                environments, teaching skills like credential extraction and network pivoting. It prepares professionals
+                to simulate persistent threats effectively.
+            </div>
+
+            <p>Active Directory (AD) serves as the foundation for identity management in enterprise environments, with
+                over 90% of Fortune 1000 companies utilizing it to manage endpoints and assets. For red teamers,
+                mastering AD vulnerabilities is essential, as it underpins nearly all corporate networks globally.</p>
+
+            <h2>The AD-RTS Course Structure</h2>
+            <p>The AD-RTS course, offered by platforms like CyberWarfare Labs, is a hands-on program designed for red
+                team enthusiasts, penetration testers, and offensive cyber analysts. It includes over 4 hours of HD
+                videos, course PDFs, and two attack path write-ups.</p>
+
+            <p>The curriculum is divided into six critical sections:</p>
+            <ul>
+                <li><strong>AD Security:</strong> Covering core components like Schema, Global Catalog, NTDS.dit
+                    database, Group Policy, and abused roles.</li>
+                <li><strong>Certificate Services Security:</strong> Authority templates, web enrollment, revocation
+                    lists, and common attacks (ADCS).</li>
+                <li><strong>Abusing Exchange Server Roles:</strong> Outlook Web Access, Exchange Web Services,
+                    persistence via mailbox delegation.</li>
+                <li><strong>Attack Surface of ESXi:</strong> Domain-joined scenarios and administrator role demos.</li>
+                <li><strong>Cyber Range Labs:</strong> Simulating unauthenticated and authenticated adversaries.</li>
+            </ul>
+
+            <h2>Practical Skills & Methods</h2>
+            <p>Participants gain practical skills in weaponizing misconfigurations, exploiting services, and executing
+                full red-team operations, including initial access via DNS abuse and LDAP recon, privilege escalation
+                through SQL Server compromise and credential dumping, lateral movement via certificate impersonation and
+                RCE on Domain Controllers, and data exfiltration from ESXi hosts and guest VMs.</p>
+
+            <h2>Prerequisites & Benefits</h2>
+            <p>Prerequisites include basic web and network penetration testing knowledge, familiarity with command-line
+                environments, and an attacker VM like Kali or Parrot. Benefits encompass lifetime access to materials,
+                technical support via email and Discord, and a CWL Verified AD-RTS Certificate upon capturing all lab
+                flags.</p>
+
+            <div class="highlight-box">
+                Real-world applications involve simulating attacks on enterprise AD, Exchange, and hypervisors, aligning
+                with certifications like SANS SEC565, which overlaps in AD attacks, lateral movement, and Bloodhound
+                analysis.
+            </div>
+
+            <p style="margin-top:40px; font-size:0.9rem; color:var(--text-muted);">
+                <em>Referência: CyberWarfare Labs AD-RTS Course Materials</em>
+            </p>
+
+        </article>
+    </div>
+    <script src="../../js/translations.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>

@@ -158,115 +158,114 @@
                         <button id="btn-copy" class="btn-copy" title="Copiar Comando">COPY</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Left Column: Terminal & Proxy -->
-            <div class="left-col">
-                <div class="panel">
-                    <div class="panel-header" data-i18n="panel_proxy">Cluster de Rotação de Proxy</div>
-                    <div id="proxy-display" data-i18n="proxy_wait">Aguardando Comando...</div>
-                    <div class="proxy-map" id="proxy-map-text"
-                        style="font-size: 0.8rem; color: #888; margin-top:5px; text-align: center;">
-                        origem: [DESCONHECIDO] -> roteando via: [DESCONHECIDO]
+                <!-- Left Column: Terminal & Proxy -->
+                <div class="left-col">
+                    <div class="panel">
+                        <div class="panel-header" data-i18n="panel_proxy">Cluster de Rotação de Proxy</div>
+                        <div id="proxy-display" data-i18n="proxy_wait">Aguardando Comando...</div>
+                        <div class="proxy-map" id="proxy-map-text" data-i18n="proxy_origin"
+                            style="font-size: 0.8rem; color: #888; margin-top:5px; text-align: center;">
+                            origem: [DESCONHECIDO] -> roteando via: [DESCONHECIDO]
+                        </div>
                     </div>
-                </div>
 
-                <div class="panel" style="margin-top: 15px;">
-                    <div class="panel-header">
-                        <span data-i18n="panel_pipeline">Pipeline de Execução</span>
-                        <span class="status-indicator" id="status-ind" data-i18n="status_idle">OCIOSO</span>
-                    </div>
-                    <div id="terminal" data-i18n="desktop_ready">Sistema Pronto. Inicie a varredura para ver
-                        os logs.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Metrics & Results -->
-            <div class="right-col">
-                <div class="panel">
-                    <div class="panel-header" data-i18n="panel_metrics">Métricas de Performance</div>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <span class="metric-value" id="time-val">0.00s</span>
-                            <span class="metric-label" data-i18n="metric_duration">DURAÇÃO TOTAL</span>
+                    <div class="panel" style="margin-top: 15px;">
+                        <div class="panel-header">
+                            <span data-i18n="panel_pipeline">Pipeline de Execução</span>
+                            <span class="status-indicator" id="status-ind" data-i18n="status_idle">OCIOSO</span>
                         </div>
-                        <div class="metric-card">
-                            <span class="metric-value" id="thread-count">0/50</span>
-                            <span class="metric-label" data-i18n="metric_threads">THREADS ATIVAS</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value" id="fps-counter">0</span>
-                            <span class="metric-label" data-i18n="metric_fp">FALSOS POSITIVOS</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value" id="productivity-val">0h</span>
-                            <span class="metric-label" data-i18n="metric_saved">TEMPO ECONOMIZADO</span>
+                        <div id="terminal" data-i18n="desktop_ready">Sistema Pronto. Inicie a varredura para ver
+                            os logs.
                         </div>
                     </div>
                 </div>
 
-                <div class="panel" style="margin-top: 15px;">
-                    <div class="panel-header"><span data-i18n="panel_findings">Descobertas
-                            Automatizadas</span> <span id="chart-toggle" data-i18n="view_chart"
-                            style="float:right; cursor:pointer; font-size:0.8rem;">[VER GRÁFICO]</span>
-                    </div>
-                    <div id="vuln-chart-container"
-                        style="display:none; height: 150px; background: #111; margin-bottom: 10px;">
-                        <!-- Placeholder for Chart -->
-                        <div style="height:100%; width: 60%; background: var(--primary-red); margin: 0 auto;">
+                <!-- Right Column: Metrics & Results -->
+                <div class="right-col">
+                    <div class="panel">
+                        <div class="panel-header" data-i18n="panel_metrics">Métricas de Performance</div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <span class="metric-value" id="time-val">0.00s</span>
+                                <span class="metric-label" data-i18n="metric_duration">DURAÇÃO TOTAL</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-value" id="thread-count">0/50</span>
+                                <span class="metric-label" data-i18n="metric_threads">THREADS ATIVAS</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-value" id="fps-counter">0</span>
+                                <span class="metric-label" data-i18n="metric_fp">FALSOS POSITIVOS</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-value" id="productivity-val">0h</span>
+                                <span class="metric-label" data-i18n="metric_saved">TEMPO ECONOMIZADO</span>
+                            </div>
                         </div>
                     </div>
-                    <ul id="vuln-list" class="scrolling-list">
-                        <!-- Populated by JS -->
-                    </ul>
+
+                    <div class="panel" style="margin-top: 15px;">
+                        <div class="panel-header"><span data-i18n="panel_findings">Descobertas
+                                Automatizadas</span> <span id="chart-toggle" data-i18n="view_chart"
+                                style="float:right; cursor:pointer; font-size:0.8rem;">[VER GRÁFICO]</span>
+                        </div>
+                        <div id="vuln-chart-container"
+                            style="display:none; height: 150px; background: #111; margin-bottom: 10px;">
+                            <!-- Placeholder for Chart -->
+                            <div style="height:100%; width: 60%; background: var(--primary-red); margin: 0 auto;">
+                            </div>
+                        </div>
+                        <ul id="vuln-list" class="scrolling-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- TECH STACK & ABOUT -->
-    <div class="info-grid">
-        <div class="panel" id="tech-stack">
-            <div class="panel-header" data-i18n="panel_stack">Stack Tecnológico</div>
-            <table class="tech-table">
-                <tr>
-                    <td><strong>Core</strong></td>
-                    <td>Python, Go (Golang), Bash</td>
-                </tr>
-                <tr>
-                    <td><strong>Segurança</strong></td>
-                    <td>Nmap, Wfuzz, Nuclei, Masscan</td>
-                </tr>
-                <tr>
-                    <td><strong>Infraestrutura</strong></td>
-                    <td>Docker, AWS, GitHub Actions</td>
-                </tr>
-                <tr>
-                    <td><strong>Relatórios</strong></td>
-                    <td>LaTeX (PDF Automatizado), JSON</td>
-                </tr>
-            </table>
-        </div>
-        <div class="panel logic-panel" style="border-top: 1px solid var(--primary-green);">
-            <div class="panel-header" data-i18n="panel_about">SOBRE DANTE</div>
-            <p data-i18n="about_p1">Desenvolvimento Orientado a Resultados.</p>
-            <div class="col-2" style="margin-top:20px;">
-                <a href="profile.html" class="btn btn-run" style="text-align:center; text-decoration:none;"
-                    data-i18n="nav_about">VER PERFIL COMPLETO >></a>
-                <a href="https://github.com/muerdo" target="_blank" class="btn btn-copy"
-                    style="text-align:center; text-decoration:none;" data-i18n="btn_github">GITHUB</a>
+        <!-- TECH STACK & ABOUT -->
+        <div class="info-grid">
+            <div class="panel" id="tech-stack">
+                <div class="panel-header" data-i18n="panel_stack">Stack Tecnológico</div>
+                <table class="tech-table">
+                    <tr>
+                        <td><strong data-i18n="tech_core">Core</strong></td>
+                        <td>Python, Go (Golang), Bash</td>
+                    </tr>
+                    <tr>
+                        <td><strong data-i18n="tech_sec">Segurança</strong></td>
+                        <td>Nmap, Wfuzz, Nuclei, Masscan</td>
+                    </tr>
+                    <tr>
+                        <td><strong data-i18n="tech_infra">Infraestrutura</strong></td>
+                        <td>Docker, AWS, GitHub Actions</td>
+                    </tr>
+                    <tr>
+                        <td><strong data-i18n="tech_reports">Relatórios</strong></td>
+                        <td>LaTeX (PDF Automatizado), JSON</td>
+                    </tr>
+                </table>
             </div>
-            <div style="margin-top:15px; text-align:center;">
-                <!-- REPORT DISABLED FOR PRIVACY
+            <div class="panel logic-panel" style="border-top: 1px solid var(--primary-green);">
+                <div class="panel-header" data-i18n="panel_about">SOBRE DANTE</div>
+                <p data-i18n="about_p1">Desenvolvimento Orientado a Resultados.</p>
+                <div class="col-2" style="margin-top:20px;">
+                    <a href="profile.html" class="btn btn-run" style="text-align:center; text-decoration:none;"
+                        data-i18n="nav_about">VER PERFIL COMPLETO >></a>
+                    <a href="https://github.com/muerdo" target="_blank" class="btn btn-copy"
+                        style="text-align:center; text-decoration:none;" data-i18n="btn_github">GITHUB</a>
+                </div>
+                <div style="margin-top:15px; text-align:center;">
+                    <!-- REPORT DISABLED FOR PRIVACY
                 <a href="reports/real_example.html" class="btn btn-run"
                     style="width:100%; text-decoration:none; background:var(--bg-dark); border:1px solid var(--neon-red);"
                     data-i18n="btn_report">ACESSAR REPORT EXEMPLO</a>
                 -->
-                <span style="color:var(--text-muted); font-size:0.8rem;"></span>
+                    <span style="color:var(--text-muted); font-size:0.8rem;"></span>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
 

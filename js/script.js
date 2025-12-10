@@ -42,6 +42,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof statusInd !== 'undefined' && statusInd && !isSimulationRunning && statusInd.textContent !== "COMPLETED") {
             // statusInd.textContent = translations[lang]['status_idle'] || "IDLE";
         }
+
+        // Update Blog Links
+        updateBlogLinks(lang);
+    }
+
+    function updateBlogLinks(lang) {
+        // Map of base filenames to specific link classes
+        const blogMap = {
+            'ad-rts-review': 'item-link-ad-rts-review',
+            'red-team-recon': 'item-link-red-team-recon',
+            'kerberoasting-attack': 'item-link-kerberoasting-attack',
+            'cyber-intelligence-report-2025': 'item-link-cyber-intelligence-report-2025',
+            'web-exploitation-journey': 'item-link-web-exploitation-journey',
+            'supabase-security': 'item-link-supabase-security',
+            'ad-red-team-essentials': 'item-link-ad-red-team-essentials'
+        };
+
+        for (const [baseName, className] of Object.entries(blogMap)) {
+            const el = document.querySelector(`.${className}`);
+            if (el) {
+                // If EN, verify if we are in root or blog dir. Assuming we are in root/blog.html
+                // The current links are 'blog/filename.html'.
+                // EN links should be 'blog/en/filename.html'.
+                if (lang === 'en') {
+                    el.setAttribute('href', `blog/en/${baseName}.html`);
+                } else {
+                    el.setAttribute('href', `blog/${baseName}.html`);
+                }
+            }
+        }
     }
 
     // --- Config & State ---

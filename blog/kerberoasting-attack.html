@@ -125,7 +125,7 @@
             <div class="toggle-group" style="margin-right: 15px;">
                 <span class="lang-opt active" data-lang="pt"
                     style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
-                <span class="lang-opt" data-lang="en"
+                <span class="lang-opt" data-lang="en" onclick="window.location.href='en/kerberoasting-attack.html'"
                     style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
             </div>
             <div class="toggle-group">
@@ -193,11 +193,13 @@
                     <br><code>Get-NetUser -SPN | select samaccountname, serviceprincipalname</code>
                 </li>
                 <li><strong>Solicitação de Tickets (TGS):</strong> Uso de ferramentas como <code>Rubeus</code> ou
-                    <code>GetUserSPNs.py</code> (Impacket) para pedir tickets ao KDC.</li>
+                    <code>GetUserSPNs.py</code> (Impacket) para pedir tickets ao KDC.
+                </li>
                 <li><strong>Extração:</strong> Dump dos tickets da memória (formato Kirbi ou ccache).</li>
                 <li><strong>Quebra Offline:</strong> Uso de <code>Hashcat</code> (modo 13100) ou
                     <code>John the Ripper</code>. Criptografias fracas como <strong>RC4-HMAC</strong> (tipo 0x17) são
-                    quebradas em horas.</li>
+                    quebradas em horas.
+                </li>
                 <li><strong>Exploração:</strong> Com a senha em texto claro, o atacante realiza login, movimento lateral
                     ou persistência (Silver Tickets).</li>
             </ol>

@@ -69,7 +69,65 @@ const translations = {
         "cv_proj_2_title": "Comunidade Internacional",
         "cv_proj_2_desc": "Membro ativo e colaborador em comunidades globais de segurança, compartilhando conhecimento sobre novas técnicas de exploração e defesa.",
         "cv_toolbox_title": "ARSENAL TÉCNICO",
-        "cv_contacts_title": "CANAIS DE CONTATO"
+        "cv_contacts_title": "CANAIS DE CONTATO",
+        "cv_langs_title": "IDIOMAS",
+        "cv_lang_pt": "PT (Nativo)",
+        "cv_lang_en": "EN (Fluente Técnico)",
+        "cv_lang_de": "DE (Avançado)",
+
+        // Blog Page
+        "blog_hero_desc": "Estudos de caso, write-ups de vulnerabilidades e opiniões técnicas sobre o cenário de segurança atual.",
+
+        // Blog Card 1 (Supabase)
+        "blog_c1_date": "10 DEZ 2025",
+        "blog_c1_cat": "SUPABASE / CLOUD SEC",
+        "blog_c1_tag": "CRITICAL",
+        "blog_c1_title": "A Falsa Sensação de Segurança: O Erro Comum que Derruba Aplicações Supabase",
+        "blog_c1_excerpt": "Como uma única requisição HTTP desautorizada permitiu o roubo de toda a receita de uma loja e o vazamento de PII. Um estudo de caso sobre Views mal configuradas e falta de RLS.",
+        "blog_btn_read_full": "LER ARTIGO COMPLETO >>",
+
+        // Blog Card 2 (AD-RTS)
+        "blog_c2_date": "DEZ 2025",
+        "blog_c2_cat": "AD SECURITY",
+        "blog_c2_tag": "CERTIFICATION",
+        "blog_c2_title": "Active Directory Red Team Specialist (AD-RTS)",
+        "blog_c2_excerpt": "Um review completo da certificação e do curso da CyberWarfare Labs. O que esperar dos laboratórios e do exame.",
+        "blog_btn_read": "LER ARTIGO >>",
+
+        // Blog Card 3 (Recon)
+        "blog_c3_date": "DEZ 2025",
+        "blog_c3_cat": "OSINT",
+        "blog_c3_tag": "RECON",
+        "blog_c3_title": "Why Reconnaissance Dominates Red Teaming",
+        "blog_c3_excerpt": "Por que 80% do trabalho é recon? Ferramentas essenciais como Maltego, Shodan e técnicas de OSINT modernas.",
+
+        // Blog Card 4 (Kerberoasting)
+        "blog_c4_date": "DEZ 2025",
+        "blog_c4_cat": "AD EXPLOITATION",
+        "blog_c4_tag": "ATTACK",
+        "blog_c4_title": "Kerberoasting: The Silent Threat",
+        "blog_c4_excerpt": "Entenda a mecânica do ataque, como extrair hashes de Service Accounts e, principalmente, como mitigar.",
+
+        // Blog Card 5 (Intel Report)
+        "blog_c5_date": "DEZ 2025",
+        "blog_c5_cat": "AI THREATS / AD SEC",
+        "blog_c5_tag": "RESEARCH",
+        "blog_c5_title": "Relatório de Inteligência de Segurança 2024-2025",
+        "blog_c5_excerpt": "Análise exaustiva do cenário de ameaças: IA Generativa, Ransomware Industrializado e a militarização da guerra 'IA contra IA'. Inclui manual técnico para Red Teams sobre exploração de AD e XSS Avançado.",
+
+        // Blog Card 6 (Web Journey)
+        "blog_c6_date": "DEZ 2025",
+        "blog_c6_cat": "WEB SEC",
+        "blog_c6_tag": "ESCALATION",
+        "blog_c6_title": "A Jornada da Exploração Web",
+        "blog_c6_excerpt": "A escalada de um XSS: Do risco básico ao takeover completo. Você está apenas encontrando falhas ou construindo cadeias de ataque?",
+        // Tech Stack
+        "tech_core": "Core",
+        "tech_sec": "Segurança",
+        "tech_infra": "Infraestrutura",
+        "tech_reports": "Relatórios",
+        "contact_copy": "COPIAR CONTATO",
+        "proxy_origin": "origem: [DESCONHECIDO] -> roteando via: [DESCONHECIDO]"
     },
     "en": {
         "hero_title": "Automating the Attack Surface",
@@ -78,6 +136,9 @@ const translations = {
         "hero_desc_3": "Delivers <strong>Executive-Ready</strong> LaTeX reports instantly post-scan.",
         "panel_cmd": "COMMAND CONTROL",
         "btn_run": "RUN",
+        "orchestration_title": "Orchestration & Backstage",
+        "orchestration_text_1": "The panel below is not just a terminal: it is the interface of an <strong>Orchestration Engine</strong>. Behind the scenes, RedRecon chains tools (Nmap → Nuclei → Custom Scripts) based on each step's output. If port 445 is detected, the SMB module activates automatically.",
+        "orchestration_text_2": "This project is just the tip of the iceberg. I maintain an ecosystem of <strong>private projects</strong> focused on C2 (Command & Control), EDR evasion, and Phishing automation. RedRecon is the public demonstration of this offensive engineering capability.",
         "panel_proxy": "Proxy Rotation Cluster",
         "proxy_wait": "Waiting for Command...",
         "panel_pipeline": "Execution Pipeline",
@@ -104,40 +165,96 @@ const translations = {
         "lbl_visual": "THEME:",
         "lbl_speed": "SPEED:",
         "blog_hero_title": "Offensive Security Blog",
+        "blog_hero_desc": "Case studies, vulnerability write-ups, and technical opinions on the current security landscape.",
 
         // Hacker Profile Specific
         "profile_title": "ANALYST REPORT // IDENTITY CONFIRMED",
-        "profile_desc": "Offensive Security Specialist and Red Team Operator focused on Adversary Simulation and risk reduction across complex hybrid enterprise environments. 100% hands-on and threat-led approach.",
+        "profile_desc": "Offensive Security Specialist and Red Team Operator focused on Adversary Simulation and risk reduction in complex hybrid corporate environments. 100% practical, threat-oriented approach.",
         "stat_exp": "YEARS EXP",
-        "stat_projects": "VULNS MANAGED",
+        "stat_projects": "MANAGED VULNS",
 
         // CV Page Content
-        "cv_role": "Offensive Security Specialist & Red Team Operator",
+        "cv_role": "Specialist & Red Team Operator",
         "cv_summary_title": "PROFESSIONAL PROFILE",
-        "cv_summary_text": "Offensive Security Specialist focused on Adversary Simulation. My approach translates high-severity technical findings into actionable business outcomes. I specialize in challenging security postures and proving the business value of Red Team operations through hands-on penetration testing.",
+        "cv_summary_text": "Offensive Security Professional with extensive experience in Penetration Testing (Web, Infrastructure, and Active Directory) and Red Teaming operations. My focus is on simulating real threats to validate the resilience of complex corporate environments. I possess technical proficiency in developing automation tools (Python, Go) to optimize reconnaissance and exploitation processes, always aligning technical findings with business impact for executive stakeholders.",
         "cv_focus_title": "CURRENT FOCUS",
-        "cv_focus_study": "Intensive Study",
-        "cv_focus_study_list": "Advanced Pentest Methodologies, Cloud Security (AWS/Azure), AD Exploitation, Security+ and CRTP Certs.",
-        "cv_focus_consulting": "Independent Consulting",
-        "cv_focus_consulting_list": "Penetration Testing, Security Tool Development, Adversary Simulation Projects.",
+        "cv_focus_study": "Intensive Study & Research",
+        "cv_focus_study_list": "Exploit development for modern Active Directory architectures, EDR/AV evasion, Cloud vulnerability research (AWS/Azure), and preparation for OSCP (Offensive Security Certified Professional) certification.",
+        "cv_focus_consulting": "Specialized Consulting",
+        "cv_focus_consulting_list": " I perform Black-box and Grey-box Pentests, code audits (SAST), and Social Engineering campaigns, delivering detailed reports with practical and strategic fixes.",
         "cv_exp_title": "PROFESSIONAL EXPERIENCE",
         "cv_role_1": "Cybersecurity Consultant",
-        "cv_company_1": "Independent Practice | 2024 - Present",
-        "cv_desc_1": "Providing specialized offensive security consulting. Conducting comprehensive penetration tests (Web, API, Network, AD). Developing custom tools and executive reports.",
+        "cv_company_1": "Independent | 2024 - Present",
+        "cv_desc_1": "I lead pentest engagements for clients in finance, healthcare, education, and corporate sectors, focusing on identifying logic flaws and critical infrastructure issues. I develop custom tools for OSINT automation and vulnerability scanning, and advise Blue Teams on critical finding remediation.",
         "cv_role_2": "Offensive Security Specialist",
         "cv_company_2": "IntruderLabs Offensive Security | 2025",
         "cv_desc_2": "Executed pentests for healthcare, education, and finance sectors. Identified critical vulnerabilities (Mass XSS, RDP Bypass, IDOR). Reduced vulnerability MTTR by 40%.",
         "cv_edu_title": "EDUCATION & CERTIFICATIONS",
-        "cv_edu_degree": "Bachelor's in Information Security",
+        "cv_edu_degree": "Bachelor in Information Security",
         "cv_edu_school": "Facimp Wyden | 2021 - 2024",
-        "cv_edu_certs": "Certifications in Progress:",
+        "cv_edu_certs": "Certifications Earned & In Progress:",
         "cv_projects_title": "PROJECTS & INITIATIVES",
         "cv_proj_1_title": "RedSec Alliance (Founder)",
-        "cv_proj_1_desc": "Consultancy focused on adversary simulation and specialized pentest services.",
+        "cv_proj_1_desc": "Founder and technical lead of RedSec Alliance, a boutique consultancy focused on Red Team Operations and Advanced Pentesting. Coordinated the standardization of testing methodologies based on MITRE ATT&CK and offensive security project management.",
         "cv_proj_2_title": "International Community",
-        "cv_proj_2_desc": "Leading a global community for cybersecurity knowledge sharing.",
+        "cv_proj_2_desc": "Active member and contributor to global security communities, sharing knowledge on new exploitation techniques and defense.",
         "cv_toolbox_title": "TECHNICAL ARSENAL",
-        "cv_contacts_title": "CONTACT CHANNELS"
+        "cv_contacts_title": "CONTACT CHANNELS",
+        "cv_langs_title": "LANGUAGES",
+        "cv_lang_pt": "PT (Native)",
+        "cv_lang_en": "EN (Technical Fluent)",
+        "cv_lang_de": "DE (Advanced)",
+
+        // Blog Card 1 (Supabase)
+        "blog_c1_date": "DEC 10 2025",
+        "blog_c1_cat": "SUPABASE / CLOUD SEC",
+        "blog_c1_tag": "CRITICAL",
+        "blog_c1_title": " The False Sense of Security: The 15-Minute Mistake That Downs Supabase Apps",
+        "blog_c1_excerpt": "How a single unauthorized HTTP request allowed the theft of an entire store's revenue and PII leakage. A case study on misconfigured Views and lack of RLS.",
+        "blog_btn_read_full": "READ FULL ARTICLE >>",
+
+        // Blog Card 2 (AD-RTS)
+        "blog_c2_date": "DEC 2025",
+        "blog_c2_cat": "AD SECURITY",
+        "blog_c2_tag": "CERTIFICATION",
+        "blog_c2_title": "Active Directory Red Team Specialist (AD-RTS)",
+        "blog_c2_excerpt": "A complete review of the certification and course by CyberWarfare Labs. What to expect from the labs and the exam.",
+        "blog_btn_read": "READ ARTICLE >>",
+
+        // Blog Card 3 (Recon)
+        "blog_c3_date": "DEC 2025",
+        "blog_c3_cat": "OSINT",
+        "blog_c3_tag": "RECON",
+        "blog_c3_title": "Why Reconnaissance Dominates Red Teaming",
+        "blog_c3_excerpt": "Why is 80% of the work recon? Essential tools like Maltego, Shodan, and modern OSINT techniques.",
+
+        // Blog Card 4 (Kerberoasting)
+        "blog_c4_date": "DEC 2025",
+        "blog_c4_cat": "AD EXPLOITATION",
+        "blog_c4_tag": "ATTACK",
+        "blog_c4_title": "Kerberoasting: The Silent Threat",
+        "blog_c4_excerpt": "Understand the attack mechanics, how to extract Service Account hashes, and most importantly, how to mitigate.",
+
+        // Blog Card 5 (Intel Report)
+        "blog_c5_date": "DEC 2025",
+        "blog_c5_cat": "AI THREATS / AD SEC",
+        "blog_c5_tag": "RESEARCH",
+        "blog_c5_title": "Security Intelligence Report 2024-2025",
+        "blog_c5_excerpt": "Exhaustive analysis of the threat landscape: Generative AI, Industrialized Ransomware, and the militarization of 'AI vs AI'. Includes technical manual for Red Teams on AD exploitation and Advanced XSS.",
+
+        // Blog Card 6 (Web Journey)
+        "blog_c6_date": "DEC 2025",
+        "blog_c6_cat": "WEB SEC",
+        "blog_c6_tag": "ESCALATION",
+        "blog_c6_title": "The Web Exploitation Journey",
+        "blog_c6_excerpt": "Escalating an XSS: From basic risk to complete takeover. Are you just finding bugs or building attack chains?",
+        // Tech Stack
+        "tech_core": "Core",
+        "tech_sec": "Security",
+        "tech_infra": "Infrastructure",
+        "tech_reports": "Reports",
+        "contact_copy": "COPY CONTACT",
+        "proxy_origin": "origin: [UNKNOWN] -> routing via: [UNKNOWN]"
     },
     // Keep other languages minimal or fallback to English for new keys to save space/time, 
     // or copy English keys if strictly required. As requested in prompt "inputs where convenient, both in english and portuguese".

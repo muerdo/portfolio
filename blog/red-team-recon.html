@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Daily Grind: Why Reconnaissance Dominates Red Teaming | RedRecon Blog</title>
+    <title>O Dia a Dia de um Red Teamer: Por que o Reconhecimento Domina | RedRecon Blog</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .blog-header {
@@ -92,7 +92,7 @@
             <div class="toggle-group" style="margin-right: 15px;">
                 <span class="lang-opt active" data-lang="pt"
                     style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
-                <span class="lang-opt" data-lang="en"
+                <span class="lang-opt" data-lang="en" onclick="window.location.href='en/red-team-recon.html'"
                     style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
             </div>
             <div class="toggle-group">
@@ -115,69 +115,75 @@
 
         <article>
             <header class="blog-header">
-                <h1>The Daily Grind of a Red Teamer: Why Reconnaissance Dominates</h1>
+                <h1>O Dia a Dia de um Red Teamer: Por que o Reconhecimento Domina</h1>
                 <div style="color: var(--text-muted); font-family: var(--font-code); font-size: 0.9rem;">
-                    <span>OSINT & RECON</span> | <span>12 MIN READ</span>
+                    <span>OSINT & RECON</span> | <span>12 MIN LEITURA</span>
                 </div>
             </header>
 
             <div class="highlight-box">
-                <strong>Insight:</strong> In red team operations, the reconnaissance phase—encompassing OSINT—often
-                accounts for up to 80% of the work. This patience distinguishes junior pentesters from seniors.
+                <strong>Insight:</strong> Em operações de Red Team, a fase de reconhecimento — englobando OSINT —
+                frequentemente representa até 80% do trabalho. Essa paciência é o que distingue pentesters júnior de
+                seniors.
             </div>
 
-            <p>Research suggests that over 90% of Fortune 1000 companies rely on Active Directory for managing endpoints
-                and assets, making it a critical target. However, before touching AD, one must understand the external
-                perimeter. This phase involves patient collection of publicly available data from sources like social
-                media, metadata in files, and network details, building a comprehensive attack map.</p>
+            <p>Pesquisas sugerem que mais de 90% das empresas da Fortune 1000 dependem do Active Directory para
+                gerenciar endpoints e ativos, tornando-o um alvo crítico. No entanto, antes de tocar no AD, deve-se
+                entender o perímetro externo. Esta fase envolve a coleta paciente de dados publicamente disponíveis de
+                fontes como redes sociais, metadados em arquivos e detalhes de rede, construindo um mapa de ataque
+                abrangente.</p>
 
-            <h2>Essential Toolset</h2>
-            <p>Favorite tools among red teamers include combinations of Google Dorks for advanced searches, Maltego for
-                automating correlation from over 58 data sources like AlienVault OTX and VirusTotal, and Recon-ng for
-                modular web reconnaissance.</p>
+            <h2>Conjunto de Ferramentas Essencial</h2>
+            <p>Ferramentas favoritas entre Red Teamers incluem combinações de Google Dorks para buscas avançadas,
+                Maltego
+                para automatizar correlação de mais de 58 fontes de dados como AlienVault OTX e VirusTotal, e Recon-ng
+                for reconhecimento web modular.</p>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Tool</th>
-                        <th>Description</th>
-                        <th>Applicability</th>
+                        <th>Ferramenta</th>
+                        <th>Descrição</th>
+                        <th>Aplicabilidade</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Maltego</strong></td>
-                        <td>Accesses 58+ data sources for visualization.</td>
-                        <td>Automates correlation in recon phase.</td>
+                        <td>Acessa 58+ fontes de dados para visualização.</td>
+                        <td>Automatiza a correlação na fase de recon.</td>
                     </tr>
                     <tr>
                         <td><strong>Recon-ng</strong></td>
-                        <td>Command-line tool with installable modules.</td>
-                        <td>Saves time on online research modules.</td>
+                        <td>Ferramenta de linha de comando com módulos instaláveis.</td>
+                        <td>Economiza tempo em módulos de pesquisa online.</td>
                     </tr>
                     <tr>
                         <td><strong>Shodan</strong></td>
-                        <td>Searches Internet-connected devices.</td>
-                        <td>Identifies vulnerabilities geographically.</td>
+                        <td>Busca dispositivos conectados à Internet.</td>
+                        <td>Identifica vulnerabilidades geograficamente.</td>
                     </tr>
                     <tr>
                         <td><strong>theHarvester</strong></td>
-                        <td>Gathers emails, hosts from Bing/VT.</td>
-                        <td>Explores DNS links for subdomains.</td>
+                        <td>Coleta emails, hosts do Bing/VT.</td>
+                        <td>Explora registros DNS para subdomínios.</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h2>Advanced Tactics</h2>
-            <p>Incorporating temporal analysis in OSINT helps predict behaviors, enhancing predictive assessments.
-                Physical recon can merge with OSINT for hybrid paths. Automation scripts like <code>HostEnum.ps1</code>
-                optimize time-consuming tasks, allowing focus on analysis.</p>
+            <h2>Táticas Avançadas</h2>
+            <p>Incorporar análise temporal em OSINT ajuda a prever comportamentos, melhorando avaliações preditivas.
+                Recon físico pode se fundir com OSINT para caminhos híbridos. Scripts de automação como
+                <code>HostEnum.ps1</code> otimizam tarefas demoradas, permitindo foco na análise.
+            </p>
 
-            <p>Efficiency and discretion are paramount, as OSINT unlocks targeted attacks by exploiting organizational
-                data without alerting defenses early in the kill chain.</p>
+            <p>Eficiência e discrição são primordiais, já que o OSINT desbloqueia ataques direcionados explorando dados
+                organizacionais sem alertar defesas no início da kill chain.</p>
 
         </article>
     </div>
+    <script src="../js/translations.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

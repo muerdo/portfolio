@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Intelligence Report 2025 | RedRecon</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .report-header {
+            border-bottom: 2px solid var(--neon-green);
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .report-header h1 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .report-meta {
+            color: var(--text-muted);
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            display: flex;
+            gap: 20px;
+        }
+
+        .chapter-title {
+            color: var(--neon-cyan);
+            font-size: 1.8rem;
+            margin-top: 60px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--neon-cyan);
+            padding-left: 20px;
+        }
+
+        h3 {
+            color: white;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-dim);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box strong {
+            color: var(--neon-green);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        ul li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        th {
+            color: var(--neon-green);
+            font-family: var(--font-code);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-back {
+            margin-bottom: 40px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--neon-green);
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo" style="display:flex; align-items:center; gap:10px;">
+            <img src="../../img/redsec_alliance.png" alt="RedSec Logo" style="height:40px; width:auto;">
+            <div style="display:flex; flex-direction:column; line-height:1.1;">
+                <span class="user-name" style="font-size:1.2rem; letter-spacing:1px;">REDSEC INTELLIGENCE</span>
+                <span class="role" style="font-size:0.7rem; color:var(--text-muted);">OFFENSIVE SECURITY RESEARCH</span>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt" data-lang="pt"
+                    onclick="window.location.href='../../blog/cyber-intelligence-report-2025.html'"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                <span class="lang-opt active" data-lang="en"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
+            </div>
+            <div class="toggle-group">
+                <button id="theme-toggle" class="btn-toggle">HACKER_MODE</button>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">DASHBOARD</a>
+                <a href="../../library.html">LIBRARY</a>
+                <a href="../../blog.html">BLOG</a>
+                <a href="../../profile.html" data-i18n="nav_about">PROFILE</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../../blog.html">← BACK TO BLOG</a>
+        </div>
+
+        <article>
+            <header class="report-header">
+                <h1>Security Intelligence Report 2024-2025</h1>
+                <div class="report-meta">
+                    <span><strong>CLASSIFICATION:</strong> PUBLIC</span>
+                    <span><strong>DATE:</strong> DECEMBER 2025</span>
+                    <span><strong>AUTHOR:</strong> REDRECON INTEL</span>
+                </div>
+            </header>
+
+            <div class="highlight-box">
+                <p style="margin:0; font-style:italic; border-left: 3px solid var(--neon-green); padding-left: 15px;">
+                    "The battlefield has shifted from 'human vs human' to 'AI vs AI'. Automation is not just an
+                    advantage; it is a survival requirement."
+                </p>
+            </div>
+
+            <section>
+                <h2 class="chapter-title">1. The Era of Synthetic Warfare</h2>
+                <p>The year 2025 marks the end of Artificial Intelligence's "infancy" in cybersecurity. We are no longer
+                    talking about harmless chatbots, but the <strong>full weaponization of algorithms</strong>.</p>
+
+                <h3>Industrial-Scale Social Engineering</h3>
+                <p>Forget emails with grammatical errors. Threat actors now use LLMs (Large Language Models) to analyze
+                    a target's digital presence—LinkedIn, news, leaked emails—and generate hyper-personalized
+                    <em>spear-phishing</em> messages in seconds.</p>
+                <ul>
+                    <li><strong>46% Increase</strong> in AI-generated phishing (Microsoft Cyber Signals 2025).</li>
+                    <li><strong>Polymorphism:</strong> Tools rewrite the same email thousands of times to evade
+                        signature-based filters.</li>
+                </ul>
+
+                <h3>Deepfakes and "CEO Fraud 2.0"</h3>
+                <p>Business Email Compromise (BEC) has evolved. With just 3 seconds of audio collected from a YouTube
+                    video, attackers can clone executive voices. The result? Wire transfer orders via WhatsApp or phone
+                    that sound 100% authentic.</p>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">2. The Ransomware Economy</h2>
+                <p>After the fall of major cartels like LockBit, the market fragmented but became more lethal. The
+                    dominant strategy is now <strong>"Big Game Hunting"</strong>.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Trend</th>
+                            <th>Statistic (2025)</th>
+                            <th>What does it mean?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Payment Denial</td>
+                            <td>64% of victims</td>
+                            <td>Companies prefer restoring backups to paying ransoms.</td>
+                        </tr>
+                        <tr>
+                            <td>Avg. Ransom Cost</td>
+                            <td>$1.0 Million</td>
+                            <td>Fewer attacks, but much more valuable targets.</td>
+                        </tr>
+                        <tr>
+                            <td>Main Vector</td>
+                            <td>Vulnerabilities (0-day)</td>
+                            <td>Software exploitation has surpassed credential theft.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">3. Red Team Tactics in Active Directory</h2>
+                <p>For offensive professionals, Active Directory remains the "crown jewel". Methodological mastery of AD
+                    separates amateurs from experts.</p>
+
+                <h3>Exploitation Methodology</h3>
+                <p>A successful Red Team operation follows four rigid pillars:</p>
+                <ul>
+                    <li><strong>Enumerate:</strong> Map trust relationships and permissions (BloodHound is essential).
+                    </li>
+                    <li><strong>Escalate:</strong> Abuse configurations (not bugs) to become Admin.</li>
+                    <li><strong>Move:</strong> Use credentials to jump from machine to machine (Lateral Movement).</li>
+                    <li><strong>Persist:</strong> Leave backdoors (Golden Tickets) for future access.</li>
+                </ul>
+
+                <h3>Spotlight: Kerberoasting</h3>
+                <p>The favorite technique for credential extraction. Attackers request access to legitimate services
+                    (like SQL Server) and receive a ticket encrypted with the service account's password. This ticket is
+                    cracked offline, without risking account lockout.</p>
+                <div class="highlight-box">
+                    <strong>How to defend?</strong> Monitor Event ID 4769 looking for RC4 encryption (0x17). If you see
+                    this in a modern environment, an attack is happening right now.
+                </div>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">4. OSINT and Cloud: The New Perimeter</h2>
+                <p>Before touching the network, the Red Team has already won. How? By exploiting what you forgot in the
+                    cloud.</p>
+
+                <h3>GitHub as an Entry Vector</h3>
+                <p>Tools like <strong>RepoRecon</strong> have industrialized the search for secrets. Forgotten `.env`
+                    files in public repositories deliver AWS keys and database connection strings daily.</p>
+
+                <h3>Azure AD (Entra ID)</h3>
+                <p>The cloud is not secure by default. Tools like <strong>ROADtools</strong> allow visualizing the
+                    entire Azure directory, identifying users without MFA or applications with excessive permissions.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">Conclusion: What to Do Now?</h2>
+                <p>Defense in 2025 requires duality: strategy and tactics.</p>
+                <p>Strategically, understand that AI will increase attack volume. Tactically, harden the basics:
+                    eliminate old protocols (RC4, NTLM), audit your code repositories, and assume your credentials have
+                    already leaked.</p>
+                <p><em>"Security is not a destination, it is a continuous resistance against entropy."</em></p>
+            </section>
+
+        </article>
+
+        <footer>
+            <div
+                style="margin-top: 50px; border-top: 1px solid var(--border-dim); padding-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+                <p>RedRecon Intelligence © 2025 | <a href="../../index.html"
+                        style="color:var(--neon-green);">Dashboard</a></p>
+            </div>
+        </footer>
+
+    </div>
+    <script src="../../js/translations.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>

@@ -72,7 +72,7 @@
             <div class="toggle-group" style="margin-right: 15px;">
                 <span class="lang-opt active" data-lang="pt"
                     style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
-                <span class="lang-opt" data-lang="en"
+                <span class="lang-opt" data-lang="en" onclick="window.location.href='en/ad-rts-review.html'"
                     style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
             </div>
             <div class="toggle-group">
@@ -95,63 +95,71 @@
 
         <article>
             <header class="blog-header">
-                <h1>Active Directory Red Team Specialist (AD-RTS): Building Offensive Expertise in 2025</h1>
+                <h1>Active Directory Red Team Specialist (AD-RTS): Construindo Expertise Ofensiva em 2025</h1>
                 <div style="color: var(--text-muted); font-family: var(--font-code); font-size: 0.9rem;">
-                    <span>CERTIFICATION REVIEW</span> | <span>10 MIN READ</span>
+                    <span>REVIEW DE CERTIFICAÇÃO</span> | <span>10 MIN LEITURA</span>
                 </div>
             </header>
 
             <div class="highlight-box">
-                <strong>Overview:</strong> The AD-RTS certification focuses on offensive strategies in Windows
-                environments, teaching skills like credential extraction and network pivoting. It prepares professionals
-                to simulate persistent threats effectively.
+                <strong>Visão Geral:</strong> A certificação AD-RTS foca em estratégias ofensivas em ambientes Windows,
+                ensinando habilidades como extração de credenciais e pivoteamento de rede. Ela prepara profissionais
+                para simular ameaças persistentes de forma eficaz.
             </div>
 
-            <p>Active Directory (AD) serves as the foundation for identity management in enterprise environments, with
-                over 90% of Fortune 1000 companies utilizing it to manage endpoints and assets. For red teamers,
-                mastering AD vulnerabilities is essential, as it underpins nearly all corporate networks globally.</p>
+            <p>O Active Directory (AD) serve como a base para o gerenciamento de identidade em ambientes corporativos,
+                com mais de 90% das empresas Fortune 1000 utilizando-o para gerenciar endpoints e ativos. Para Red
+                Teamers, dominar as vulnerabilidades do AD é essencial, pois ele sustenta quase todas as redes
+                corporativas globalmente.</p>
 
-            <h2>The AD-RTS Course Structure</h2>
-            <p>The AD-RTS course, offered by platforms like CyberWarfare Labs, is a hands-on program designed for red
-                team enthusiasts, penetration testers, and offensive cyber analysts. It includes over 4 hours of HD
-                videos, course PDFs, and two attack path write-ups.</p>
+            <h2>Estrutura do Curso AD-RTS</h2>
+            <p>O curso AD-RTS, oferecido por plataformas como CyberWarfare Labs, é um programa prático projetado para
+                entusiastas de Red Team, pentesters e analistas ofensivos. Inclui mais de 4 horas de vídeos HD, PDFs do
+                curso e dois write-ups de caminhos de ataque.</p>
 
-            <p>The curriculum is divided into six critical sections:</p>
+            <p>O currículo é dividido em seis seções críticas:</p>
             <ul>
-                <li><strong>AD Security:</strong> Covering core components like Schema, Global Catalog, NTDS.dit
-                    database, Group Policy, and abused roles.</li>
-                <li><strong>Certificate Services Security:</strong> Authority templates, web enrollment, revocation
-                    lists, and common attacks (ADCS).</li>
-                <li><strong>Abusing Exchange Server Roles:</strong> Outlook Web Access, Exchange Web Services,
-                    persistence via mailbox delegation.</li>
-                <li><strong>Attack Surface of ESXi:</strong> Domain-joined scenarios and administrator role demos.</li>
-                <li><strong>Cyber Range Labs:</strong> Simulating unauthenticated and authenticated adversaries.</li>
+                <li><strong>Segurança do AD:</strong> Cobrindo componentes principais como Schema, Global Catalog, banco
+                    de dados NTDS.dit, Group Policy e roles abusadas.</li>
+                <li><strong>Segurança de Serviços de Certificado:</strong> Templates de autoridade, inscrição web,
+                    listas
+                    de revogação e ataques comuns (ADCS).</li>
+                <li><strong>Abusando de Funções do Exchange Server:</strong> Outlook Web Access, Exchange Web Services,
+                    persistência via delegação de mailbox.</li>
+                <li><strong>Superfície de Ataque do ESXi:</strong> Cenários em domínio e demos de função de
+                    administrador.</li>
+                <li><strong>Labs Cyber Range:</strong> Simulando adversários autenticados e não autenticados.</li>
             </ul>
 
-            <h2>Practical Skills & Methods</h2>
-            <p>Participants gain practical skills in weaponizing misconfigurations, exploiting services, and executing
-                full red-team operations, including initial access via DNS abuse and LDAP recon, privilege escalation
-                through SQL Server compromise and credential dumping, lateral movement via certificate impersonation and
-                RCE on Domain Controllers, and data exfiltration from ESXi hosts and guest VMs.</p>
+            <h2>Habilidades Práticas & Métodos</h2>
+            <p>Os participantes ganham habilidades práticas na "armentização" de configurações incorretas, exploração de
+                serviços e execução de operações completas de Red Team, incluindo acesso inicial via abuso de DNS e
+                recon
+                LDAP, escalação de privilégio através de comprometimento de SQL Server e dump de credenciais, movimento
+                lateral via impersonação de certificado e RCE em Domain Controllers, e exfiltração de dados de hosts
+                ESXi e VMs convidadas.</p>
 
-            <h2>Prerequisites & Benefits</h2>
-            <p>Prerequisites include basic web and network penetration testing knowledge, familiarity with command-line
-                environments, and an attacker VM like Kali or Parrot. Benefits encompass lifetime access to materials,
-                technical support via email and Discord, and a CWL Verified AD-RTS Certificate upon capturing all lab
-                flags.</p>
+            <h2>Pré-requisitos & Benefícios</h2>
+            <p>Os pré-requisitos incluem conhecimento básico de pentest web e de rede, familiaridade com linha de
+                comando
+                e uma VM de ataque como Kali ou Parrot. Os benefícios englobam acesso vitalício aos materiais, suporte
+                técnico via email e Discord, e um Certificado AD-RTS Verificado pela CWL após capturar todas as flags do
+                lab.</p>
 
             <div class="highlight-box">
-                Real-world applications involve simulating attacks on enterprise AD, Exchange, and hypervisors, aligning
-                with certifications like SANS SEC565, which overlaps in AD attacks, lateral movement, and Bloodhound
-                analysis.
+                Aplicações no mundo real envolvem simular ataques em AD corporativo, Exchange e hipervisores, alinhando
+                com certificações como SANS SEC565, que se sobrepõe em ataques AD, movimento lateral e análise
+                Bloodhound.
             </div>
 
             <p style="margin-top:40px; font-size:0.9rem; color:var(--text-muted);">
-                <em>Referência: CyberWarfare Labs AD-RTS Course Materials</em>
+                <em>Referência: Materiais do Curso CyberWarfare Labs AD-RTS</em>
             </p>
 
         </article>
     </div>
+    <script src="../js/translations.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
