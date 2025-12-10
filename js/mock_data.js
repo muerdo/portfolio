@@ -1,4 +1,4 @@
-const mockData = {
+window.mockData = {
     logs: [
         "[CMD] redrecon --full --target target-corp.com",
         "[INF] Iniciando Pipeline RedRecon v2.4",

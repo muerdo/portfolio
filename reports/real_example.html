@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Segurança - REDACTED.xyz</title>
+    <title>Relatório de Segurança - REDACTED</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
@@ -142,7 +142,7 @@
         <!-- Header from LaTeX -->
         <header class="header">
             <span>Supabase HackerOne</span>
-            <span>Relatório de Segurança — REDACTED.xyz</span>
+            <span>Relatório de Segurança — REDACTED</span>
         </header>
 
         <!-- Title Section -->
@@ -150,7 +150,7 @@
         <div class="subtitle">Conseguimos alterar o perfil e a loja de QUALQUER usuário/vendedor da plataforma</div>
         <div class="meta-info">
             REDACTED e-mails reais, histórico de compras, valores pagos e desvio de pagamentos<br>
-            Projeto Supabase: REDACTED (REDACTED.xyz)<br><br>
+            Projeto Supabase: REDACTED (REDACTED)<br><br>
             <strong>Autor:</strong> Reportado via HackerOne — REDACTED
         </div>
 
@@ -164,10 +164,12 @@
             <p>Isso foi possível devido a:</p>
             <ul>
                 <li><code>security_invoker=false</code> nas views <code>profiles_public</code> e
-                    <code>stores_public</code></li>
+                    <code>stores_public</code>
+                </li>
                 <li>Operações INSERT/UPDATE/DELETE habilitadas nessas views</li>
                 <li>Ausência total de RLS em tabelas críticas (<code>orders</code>, <code>transfers</code>,
-                    <code>carts</code>, <code>newsletter_subscribers</code>, etc)</li>
+                    <code>carts</code>, <code>newsletter_subscribers</code>, etc)
+                </li>
                 <li>Esquema completo do banco exposto publicamente via OpenAPI</li>
             </ul>
 
@@ -177,7 +179,8 @@
                     <li>Perfis sobrescritos com Stored XSS (<code>bio</code> executa JavaScript em todo o site)</li>
                     <li>Lojas sobrescritas (nome, banner, descrição, e-mail de contato)</li>
                     <li>Possibilidade real de desvio de pagamentos via alteração de
-                        <code>stripe_connect_account_id</code></li>
+                        <code>stripe_connect_account_id</code>
+                    </li>
                     <li>Extração de mais de REDACTED e-mails reais + histórico completo de compras</li>
                 </ul>
             </div>
@@ -214,7 +217,7 @@ Header: Prefer: resolution=merge-duplicates
   "full_name": "REDACTED – CONTA HACKEADA",
   "bio": "&lt;h1 style=color:red&gt;PWNED&lt;/h1&gt;&lt;img src=x onerror=alert(document.domain)&gt;"
 }</code></pre>
-            <p>→ Perfil alterado imediatamente + XSS ativo em https://www.REDACTED.xyz/@REDACTED</p>
+            <p>→ Perfil alterado imediatamente + XSS ativo em https://www.REDACTED/@REDACTED</p>
 
             <h3>2. Alteração de qualquer loja</h3>
             <pre><code>POST https://REDACTED.supabase.co/rest/v1/stores_public

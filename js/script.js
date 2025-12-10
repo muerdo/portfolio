@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const mockData = window.mockData; // Ensure access to global data
 
     // --- Language State ---
     const langOpts = document.querySelectorAll('.lang-opt');
@@ -301,8 +302,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderChart() {
         if (!chartContainer) return;
+        const data = window.mockData || mockData; // Fallback
+        if (!data || !data.vulnerabilities) return;
+
         let high = 0, med = 0, low = 0;
-        mockData.vulnerabilities.forEach(v => {
+        data.vulnerabilities.forEach(v => {
             if (v.severity === "High" || v.severity === "Critical") high++;
             else if (v.severity === "Medium") med++;
             else low++;
@@ -318,19 +322,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 height: 140px; 
                 border-radius: 50%; 
                 background: conic-gradient(
-                    var(--primary-red) 0deg ${highDeg}deg, 
+                    var(--neon-red) 0deg ${highDeg}deg, 
                     orange ${highDeg}deg ${highDeg + medDeg}deg, 
                     #444 ${highDeg + medDeg}deg 360deg
                 );
                 margin: 5px auto;
                 position: relative;
+                box-shadow: 0 0 15px rgba(255, 42, 42, 0.2);
             ">
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 4px; font-size: 0.7rem;">
-                    Dist. Risco
+                <div style="
+                    position: absolute; 
+                    top: 50%; 
+                    left: 50%; 
+                    transform: translate(-50%, -50%); 
+                    width: 100px;
+                    height: 100px;
+                    background: var(--bg-panel);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                ">
+                   <div style="font-size:0.7rem; color:#888;">RISK SCORE</div>
+                   <div style="font-size:1.2rem; font-weight:bold; color:var(--text-primary);">${data.vulnerabilities.length}</div>
                 </div>
             </div>
-            <div style="text-align:center; font-size: 0.8rem; margin-top:5px;">
-                <span style="color:var(--primary-red)">High (${high})</span> | <span style="color:orange">Med (${med})</span> | <span style="color:#888">Low (${low})</span>
+            <div style="text-align:center; font-size: 0.8rem; margin-top:10px;">
+                <span style="color:var(--neon-red); margin-right:5px;">● High (${high})</span> 
+                <span style="color:orange; margin-right:5px;">● Med (${med})</span> 
+                <span style="color:#666;">● Low (${low})</span>
             </div>
         `;
     }
