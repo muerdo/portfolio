@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Oliveira | Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Rajdhani:wght@500;700&family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .profile-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 120px auto 40px;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 900px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .left-sidebar .panel {
+            text-align: center;
+        }
+
+        .avatar-large {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            /* Optional: user requests angular or circles? Keeping circular for bio photo usually works well unless heavy sci-fi */
+            border: 2px solid var(--neon-cyan);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .avatar-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            color: #444;
+            font-size: 5rem;
+        }
+
+        .contact-list {
+            margin-top: 30px;
+            text-align: left;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            /* Prevent overflow on small screens */
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+            word-break: break-all;
+            /* Ensure emails/urls don't overflow */
+        }
+
+        .contact-item a:hover {
+            color: var(--neon-cyan);
+        }
+
+        .icon-box {
+            color: var(--neon-green);
+            min-width: 20px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--dim-color);
+            margin: 20px 0 40px 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            /* Adjust for line width */
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--bg-dark);
+            border: 2px solid var(--neon-red);
+            transform: rotate(45deg);
+            /* Diamond shape */
+        }
+
+        .job-title {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .job-company {
+            font-family: var(--font-code);
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .job-desc {
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .cert-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border: 1px solid var(--dim-color);
+            color: var(--neon-green);
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        /* Responsive Grids for Inner Sections */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            .left-sidebar {
+                margin-bottom: 20px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                /* 2 cols for contacts on tablet/mobile if space allows */
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-list {
+                grid-template-columns: 1fr;
+                /* Stack contacts on very small screens */
+            }
+
+            .job-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <!-- NAVIGATION -->
+    <nav class="top-nav">
+        <div class="logo">
+            <span class="user-name">DANTE</span>
+            <span class="role">| <span data-i18n="cv_role">Specialist</span></span>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt active" data-lang="pt"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">PT</span>
+                <span class="lang-opt" data-lang="en"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">EN</span>
+            </div>
+            <div class="toggle-group">
+                <button id="theme-toggle" class="btn-toggle">MODO_HACKER</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">DASHBOARD</a>
+                <a href="library.html">BIBLIOTECA</a>
+                <a href="blog.html">BLOG</a>
+                <a href="#" class="active" data-i18n="nav_about">PERFIL</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+
+        <!-- SIDEBAR: PHOTO, CONTACT, SKILLS -->
+        <aside class="left-sidebar">
+            <div class="panel clip-angular">
+                <div class="avatar-large">
+                    <img src="img/pedro_photo.png" alt="Pedro Oliveira" id="profile-img" style="display:block;">
+                    <div class="avatar-placeholder" id="profile-ph" style="display:none;"></div>
+                </div>
+
+                <h3 style="font-family: var(--font-head); color:white; border-bottom:1px solid var(--dim-color); padding-bottom:10px; margin-bottom:15px;"
+                    data-i18n="cv_contacts_title">CANAIS DE CONTATO</h3>
+
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <span class="icon-box">Email: </span>
+                        <a href="mailto:d30625657@gmail.com">d30625657@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon-box">Tel: </span>
+                        <span>+55 (99) 98165-0963</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon-box">Loc: </span>
+                        <span>Maranhão, Brazil</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon-box">Link: </span>
+                        <a href="https://linkedin.com/in/oliv3rpedr0" target="_blank">linkedin/in/oliv3rpedr0</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon-box">Github: </span>
+                        <a href="https://github.com/muerdo" target="_blank">github.com/muerdo</a>
+                    </div>
+                </div>
+
+                <div style="margin-top:30px;">
+                    <h3 style="font-family: var(--font-head); color:white; border-bottom:1px solid var(--dim-color); padding-bottom:10px; margin-bottom:15px;"
+                        data-i18n="cv_toolbox_title">ARSENAL TÉCNICO</h3>
+                    <div style="text-align:left; display:flex; flex-wrap:wrap; gap:5px;">
+                        <span class="cert-tag">Python/Go</span>
+                        <span class="cert-tag">Nmap/Nuclei</span>
+                        <span class="cert-tag">Burp Suite</span>
+                        <span class="cert-tag">Active Directory</span>
+                        <span class="cert-tag">AWS/Azure</span>
+                        <span class="cert-tag">Docker</span>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div style="margin-top:30px; text-align:left;">
+                    <h4 style="color:var(--text-primary); font-size:0.9rem;">LANGUAGES</h4>
+                    <div style="font-size:0.8rem; color:var(--text-muted); margin-top:5px;">
+                        <div>PT (Native)</div>
+                        <div>EN (Technical Fluent)</div>
+                        <div>DE (Advanced)</div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT: BIO, EXP, PROJECTS -->
+        <main class="main-content">
+
+            <!-- Summary -->
+            <section class="panel clip-angular" style="margin-bottom:20px;">
+                <div class="panel-header" data-i18n="cv_summary_title">PERFIL PROFISSIONAL</div>
+                <p data-i18n="cv_summary_text" style="line-height:1.8; color:var(--text-primary);">
+                    <!-- Injected via JS -->
+                </p>
+            </section>
+
+            <!-- Focus -->
+            <section class="panel clip-angular" style="margin-bottom:20px;">
+                <div class="panel-header" data-i18n="cv_focus_title">FOCO ATUAL</div>
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color:var(--neon-green);" data-i18n="cv_focus_study">Estudo Intensivo</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);" data-i18n="cv_focus_study_list">...</p>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--neon-cyan);" data-i18n="cv_focus_consulting">Consultoria</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);" data-i18n="cv_focus_consulting_list">...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="panel clip-angular" style="margin-bottom:20px;">
+                <div class="panel-header" data-i18n="cv_exp_title">EXPERIÊNCIA PROFISSIONAL</div>
+
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="job-title" data-i18n="cv_role_1">Cybersecurity Consultant</div>
+                        <div class="job-company" data-i18n="cv_company_1">Independent Practice | 2024 - Present</div>
+                        <div class="job-desc" data-i18n="cv_desc_1">...</div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="job-title" data-i18n="cv_role_2">Offensive Security Specialist</div>
+                        <div class="job-company" data-i18n="cv_company_2">IntruderLabs | 2024</div>
+                        <div class="job-desc" data-i18n="cv_desc_2">...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="panel clip-angular" style="margin-bottom:20px;">
+                <div class="panel-header" data-i18n="cv_projects_title">PROJETOS & INICIATIVAS</div>
+                <div class="grid-2">
+                    <div
+                        style="background:rgba(0,0,0,0.2); padding:15px; border:1px solid var(--dim-color); text-align:center;">
+                        <img src="img/logo_redsec.png" alt="RedSec Logo" style="max-height:120px; margin-bottom:10px;">
+                        <div style="text-align:left;">
+                            <h4 style="color:var(--neon-red); margin-bottom:5px;" data-i18n="cv_proj_1_title">RedSec
+                                Alliance</h4>
+                            <p style="font-size:0.9rem; color:var(--text-muted);" data-i18n="cv_proj_1_desc">...</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background:rgba(0,0,0,0.2); padding:15px; border:1px solid var(--dim-color); text-align:center;">
+                        <img src="img/seal_redsec.png" alt="RedSec Seal" style="max-height:120px; margin-bottom:10px;">
+                        <div style="text-align:left;">
+                            <h4 style="color:var(--neon-cyan); margin-bottom:5px;" data-i18n="cv_proj_2_title">
+                                International
+                                Comm</h4>
+                            <p style="font-size:0.9rem; color:var(--text-muted);" data-i18n="cv_proj_2_desc">...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="panel clip-angular">
+                <div class="panel-header" data-i18n="cv_edu_title">EDUCAÇÃO & CERTIFICAÇÕES</div>
+                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+                    <div>
+                        <h4 style="color:var(--text-primary);" data-i18n="cv_edu_degree">Bachelors</h4>
+                        <div style="color:var(--neon-green); font-family:var(--font-code); font-size:0.9rem;"
+                            data-i18n="cv_edu_school">Facimp Wyden</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <h4 style="color:var(--text-primary);" data-i18n="cv_edu_certs">Certs</h4>
+                        <div
+                            style="display:flex; gap:15px; flex-wrap:wrap; justify-content:flex-end; margin-top:10px; align-items:center;">
+                            <img src="img/cert_adrts.jpg" alt="AD-RTS"
+                                style="height:90px; border:1px solid var(--neon-green);">
+                            <img src="img/cert_ejpt.png" alt="eJPT" style="height:90px;">
+                            <span class="cert-tag" style="border-color:var(--neon-red); color:var(--neon-red);">OSCP
+                                (Study)</span>
+                            <span class="cert-tag">Sec+</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer style="margin-top:40px;">
+        <p>Pedro Oliveira | Codename: Dante | <a href="index.html" style="color: var(--neon-red);">Back to Dashboard</a>
+        </p>
+    </footer>
+
+    <script src="js/mock_data.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedRecon | Blog de Segurança</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Rajdhani:wght@500;700&family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo">
+            <span class="user-name">REDRECON DEV</span>
+            <span class="role">| Blog & Artigos</span>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt active" data-lang="pt"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                <span class="lang-opt" data-lang="en"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
+            </div>
+            <div class="toggle-group">
+                <button id="theme-toggle" class="btn-toggle">MODO_HACKER</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">DASHBOARD</a>
+                <a href="library.html">BIBLIOTECA</a>
+                <a href="blog.html" class="active">BLOG</a>
+                <a href="profile.html" data-i18n="nav_about">PERFIL</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <section class="hero-summary" style="border-bottom:none;">
+            <h1 data-i18n="blog_hero_title">Blog de Segurança Ofensiva</h1>
+            <p style="max-width: 800px; margin: 0 auto; color: var(--text-color);">
+                Estudos de caso, write-ups de vulnerabilidades e opiniões técnicas sobre o cenário de segurança atual.
+            </p>
+        </section>
+
+        <div class="blog-grid">
+
+            <!-- Article 3 (New) -->
+            <article class="panel blog-card" style="padding:0;">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-cyan);">📅 DEZ 2025</span> |
+                        <span style="color:var(--neon-green);">📡 AD SECURITY</span> |
+                        <span style="color:var(--neon-red);">🔥 TACTICS</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary); font-size: 1.5rem;">O
+                        Essencial para o Active Directory e Red Team</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        Kerberoasting, OSINT e o dia a dia de um Red Teamer. Descubra como dominar a caça a falhas
+                        críticas no AD com o curso AD-RTS.
+                    </div>
+                    <a href="blog/ad-red-team-essentials.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER ARTIGO >></a>
+                </div>
+            </article>
+
+            <!-- Article 4 (New) -->
+            <article class="panel blog-card" style="padding:0;">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-cyan);">📅 DEZ 2025</span> |
+                        <span style="color:var(--neon-green);">🌐 WEB SEC</span> |
+                        <span style="color:var(--neon-red);">🔥 ESCALATION</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary); font-size: 1.5rem;">A
+                        Jornada da Exploração Web</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        A escalada de um XSS: Do risco básico ao takeover completo. Você está apenas encontrando falhas
+                        ou construindo cadeias de ataque?
+                    </div>
+                    <a href="blog/web-exploitation-journey.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER ARTIGO >></a>
+                </div>
+            </article>
+
+            <!-- Article 2 (New) -->
+            <article class="panel blog-card" style="padding:0;">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-cyan);">📅 DEZ 2025</span> |
+                        <span style="color:var(--neon-green);">🤖 AI THREATS / AD SEC</span> |
+                        <span style="color:var(--neon-red);">🔥 RESEARCH</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary); font-size: 1.5rem;">
+                        Relatório de Inteligência de Segurança 2024-2025</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        Análise exaustiva do cenário de ameaças: IA Generativa, Ransomware Industrializado e a
+                        militarização da guerra "IA contra IA". Inclui manual técnico para Red Teams sobre exploração de
+                        AD e XSS Avançado.
+                    </div>
+                    <a href="blog/cyber-intelligence-report-2025.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER RELATÓRIO COMPLETO >></a>
+                </div>
+            </article>
+
+            <!-- Article 1 -->
+            <article class="panel blog-card" style="padding:0;">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-cyan);">📅 10 DEZ 2025</span> |
+                        <span style="color:var(--neon-green);">🔒 SUPABASE / CLOUD SEC</span> |
+                        <span style="color:var(--neon-red);">🔥 CRITICAL</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary);">A Falsa Sensação de
+                        Segurança: O Erro Comum que Derruba Aplicações Supabase</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        Como uma única requisição HTTP desautorizada permitiu o roubo de toda a receita de uma loja e o
+                        vazamento de PII. Um estudo de caso sobre Views mal configuradas e falta de RLS.
+                    </div>
+                    <a href="blog/supabase-security.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER ARTIGO COMPLETO >></a>
+                </div>
+            </article>
+
+            <!-- Placeholder -->
+            <div style="text-align: center; margin-top: 50px; color: #555; font-family: var(--font-code);">
+                // SYSTEM_LOG: WAITING FOR NEW ENTRIES...
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>RedRecon Blog | <a href="index.html" style="color: var(--neon-red);">Voltar para Home</a></p>
+    </footer>
+
+    <script src="js/mock_data.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

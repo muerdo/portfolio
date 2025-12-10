@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Inteligência de Segurança 2025 | RedRecon</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .report-header {
+            border-bottom: 2px solid var(--neon-green);
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .report-header h1 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .report-meta {
+            color: var(--text-muted);
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            display: flex;
+            gap: 20px;
+        }
+
+        .chapter-title {
+            color: var(--neon-cyan);
+            font-size: 1.8rem;
+            margin-top: 60px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--neon-cyan);
+            padding-left: 20px;
+        }
+
+        h3 {
+            color: white;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-dim);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box strong {
+            color: var(--neon-green);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        ul li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        th {
+            color: var(--neon-green);
+            font-family: var(--font-code);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-back {
+            margin-bottom: 40px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--neon-green);
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../blog.html">← VOLTAR PARA O BLOG</a>
+        </div>
+
+        <article>
+            <header class="report-header">
+                <h1>Relatório de Inteligência de Segurança 2024-2025</h1>
+                <div class="report-meta">
+                    <span><strong>CLASSIFICAÇÃO:</strong> PÚBLICO</span>
+                    <span><strong>DATA:</strong> DEZEMBRO 2025</span>
+                    <span><strong>AUTOR:</strong> REDRECON INTEL</span>
+                </div>
+            </header>
+
+            <div class="highlight-box">
+                <p style="margin:0; font-style:italic; border-left: 3px solid var(--neon-green); padding-left: 15px;">
+                    "O campo de batalha mudou de 'humano contra humano' para 'IA contra IA'. A automação não é apenas
+                    uma vantagem; é um requisito de sobrevivência."
+                </p>
+            </div>
+
+            <section>
+                <h2 class="chapter-title">1. A Era da Guerra Sintética</h2>
+                <p>O ano de 2025 marca o fim da "infância" da Inteligência Artificial na segurança cibernética. Não
+                    estamos mais falando de chatbots inofensivos, mas de <strong>militarização completa de
+                        algoritmos</strong>.</p>
+
+                <h3>Engenharia Social em Escala Industrial</h3>
+                <p>Esqueça os e-mails com erros gramaticais. Atores de ameaças agora utilizam LLMs (Large Language
+                    Models) para analisar a presença digital de um alvo—LinkedIn, notícias, e-mails vazados—e gerar
+                    mensagens de <em>spear-phishing</em> hiper-personalizadas em segundos.</p>
+                <ul>
+                    <li><strong>46% de Aumento</strong> em phishing gerado por IA (Microsoft Cyber Signals 2025).</li>
+                    <li><strong>Polimorfismo:</strong> Ferramentas reescrevem o mesmo e-mail milhares de vezes para
+                        evadir filtros baseados em assinatura.</li>
+                </ul>
+
+                <h3>Deepfakes e a "Fraude do CEO 2.0"</h3>
+                <p>O comprometimento de e-mail corporativo (BEC) evoluiu. Com apenas 3 segundos de áudio coletados de um
+                    vídeo no YouTube, atacantes clonam a voz de executivos. O resultado? Ordens de transferência
+                    bancária via WhatsApp ou telefone que soam 100% autênticas.</p>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">2. A Economia do Ransomware</h2>
+                <p>Após a queda de grandes cartéis como LockBit, o mercado se fragmentou, mas tornou-se mais letal. A
+                    estratégia dominante agora é o <strong>"Big Game Hunting"</strong>.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tendência</th>
+                            <th>Estatística (2025)</th>
+                            <th>O que significa?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Negação de Pagamento</td>
+                            <td>64% das vítimas</td>
+                            <td>Empresas preferem restaurar backups a pagar resgates.</td>
+                        </tr>
+                        <tr>
+                            <td>Custo Médio de Resgate</td>
+                            <td>$1.0 Milhão</td>
+                            <td>Menos ataques, mas alvos muito mais valiosos.</td>
+                        </tr>
+                        <tr>
+                            <td>Vetor Principal</td>
+                            <td>Vulnerabilidades (0-day)</td>
+                            <td>Exploração de software superou o roubo de credenciais.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">3. Táticas de Red Team no Active Directory</h2>
+                <p>Para profissionais ofensivos, o Active Directory continua sendo a "joia da coroa". O domínio
+                    metodológico do AD separa os amadores dos especialistas.</p>
+
+                <h3>A Metodologia de Exploração</h3>
+                <p>Uma operação de Red Team bem-sucedida segue quatro pilares rígidos:</p>
+                <ul>
+                    <li><strong>Enumerar:</strong> Mapear relações de confiança e permissões (BloodHound é essencial).
+                    </li>
+                    <li><strong>Escalar:</strong> Abusar de configurações (não bugs) para virar Admin.</li>
+                    <li><strong>Mover:</strong> Usar credenciais para pular de máquina em máquina (Lateral Movement).
+                    </li>
+                    <li><strong>Persistir:</strong> Deixar backdoors (Golden Tickets) para acesso futuro.</li>
+                </ul>
+
+                <h3>Spotlight: Kerberoasting</h3>
+                <p>A técnica favorita para extração de credenciais. Atacantes solicitam acesso a serviços legítimos
+                    (como SQL Server) e recebem um ticket criptografado com a senha da conta de serviço. Esse ticket é
+                    quebrado offline, sem risco de bloqueio de conta.</p>
+                <div class="highlight-box">
+                    <strong>Como se defender?</strong> Monitore o Event ID 4769 buscando criptografia RC4 (0x17). Se
+                    você ver isso em um ambiente moderno, é um ataque acontecendo agora.
+                </div>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">4. OSINT e Nuvem: O Novo Perímetro</h2>
+                <p>Antes de tocar na rede, o Red Team já venceu. Como? Explorando o que você esqueceu na nuvem.</p>
+
+                <h3>GitHub como Vetor de Entrada</h3>
+                <p>Ferramentas como <strong>RepoRecon</strong> industrializaram a busca por segredos. Arquivos `.env`
+                    esquecidos em repositórios públicos entregam chaves da AWS e strings de conexão de banco de dados
+                    diariamente.</p>
+
+                <h3>Azure AD (Entra ID)</h3>
+                <p>A nuvem não é segura por padrão. Ferramentas como <strong>ROADtools</strong> permitem visualizar todo
+                    o diretório do Azure, identificando usuários sem MFA ou aplicações com permissões excessivas.</p>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">Conclusão: O Que Fazer Agora?</h2>
+                <p>A defesa em 2025 exige uma dualidade: estratégia e tática.</p>
+                <p>Estrategicamente, entenda que a IA vai aumentar o volume de ataques. Taticamente, endureça o básico:
+                    elimine protocolos antigos (RC4, NTLM), audite seus repositórios de código e assuma que suas
+                    credenciais já vazaram.</p>
+                <p><em>"A segurança não é um destino, é uma resistência contínua contra a entropia."</em></p>
+            </section>
+
+        </article>
+
+        <footer>
+            <div
+                style="margin-top: 50px; border-top: 1px solid var(--border-dim); padding-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+                <p>RedRecon Intelligence © 2025 | <a href="../index.html" style="color:var(--neon-green);">Dashboard</a>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

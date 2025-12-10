@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Falsa Sensação de Segurança: O Erro Comum que Derruba Aplicações Supabase | RedRecon Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-header {
+            border-bottom: 2px solid var(--neon-red);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .blog-header h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .highlight-box {
+            background: rgba(255, 42, 42, 0.05);
+            border-left: 4px solid var(--neon-red);
+            padding: 20px;
+            margin: 30px 0;
+            color: #ddd;
+        }
+
+        .highlight-box.success {
+            border-left-color: var(--neon-green);
+            background: rgba(0, 255, 65, 0.05);
+        }
+
+        .highlight-box.warning {
+            border-left-color: var(--neon-cyan);
+            background: rgba(0, 243, 255, 0.05);
+        }
+
+        .nav-back {
+            margin-bottom: 30px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+
+        .nav-back a:hover {
+            color: var(--neon-cyan);
+        }
+
+        h2 {
+            color: var(--neon-green);
+            margin-top: 40px;
+            border-bottom: 1px solid var(--border-dim);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: white;
+            margin-top: 30px;
+            font-size: 1.3rem;
+        }
+
+        p {
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: var(--neon-cyan);
+        }
+
+        pre {
+            background-color: #000;
+            border: 1px solid var(--border-dim);
+            border-left: 3px solid var(--neon-cyan);
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: var(--font-code);
+        }
+
+        code {
+            color: var(--neon-cyan);
+            font-family: var(--font-code);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-dim);
+            color: var(--text-primary);
+        }
+
+        th {
+            color: var(--neon-green);
+            font-family: var(--font-code);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../blog.html">← VOLTAR PARA O BLOG</a>
+        </div>
+
+        <article>
+            <header class="blog-header">
+                <h1>🚨 A Falsa Sensação de Segurança: O Erro Comum de 15 Minutos que Derruba Aplicações Supabase</h1>
+                <div style="color:var(--text-muted); font-family:var(--font-code); font-size:0.9rem;">
+                    <strong>TÓPICO:</strong> CLOUD SEC // <strong>LEITURA:</strong> 8 MIN // <span
+                        style="color:var(--neon-red);">CRITICAL</span>
+                </div>
+            </header>
+
+            <section>
+                <p>Você escolheu o Supabase para construir seu próximo grande projeto. É rápido, tem um UX incrível, e a
+                    promessa é tentadora: "Bancos de dados com superpoderes". Mas e se eu dissesse que, com apenas
+                    <strong>uma requisição HTTP desautorizada</strong>, um atacante pode roubar toda a receita da sua
+                    loja?</p>
+
+                <div class="highlight-box">
+                    <p style="margin:0;">Recentemente, um caso real demonstrou como uma falha simples de configuração
+                        permitiu que um atacante tomasse controle total de contas e vazasse milhares de dados pessoais
+                        (PII).</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>O Cenário de Horror</h2>
+                <p>A vulnerabilidade foi de uma simplicidade chocante: o atacante conseguiu alterar o perfil público
+                    (<code>handle</code>, <code>bio</code>, <code>full_name</code>) e a loja de <strong>qualquer
+                        usuário</strong> da plataforma.</p>
+
+                <h3>Os 3 Pecados Capitais:</h3>
+                <ul>
+                    <li>
+                        <strong>1. Views sem Controle de Acesso:</strong> Views criadas com privilégios elevados
+                        (<code>security_invoker=false</code>) ignoram as regras de segurança do usuário que faz a
+                        requisição.
+                    </li>
+                    <li>
+                        <strong>2. Ausência de RLS (Row Level Security):</strong> As tabelas críticas
+                        (<code>orders</code>, <code>newsletter_subscribers</code>) estavam com o RLS desativado. Sem
+                        RLS, o banco trata qualquer consulta via API como "permitida para tudo".
+                    </li>
+                    <li>
+                        <strong>3. Vazamento de Metadados:</strong> O esquema completo do banco estava exposto via
+                        OpenAPI, permitindo ao atacante saber exatamente onde buscar: `GET /rest/v1/orders`.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🚩 O Fim da Falsa Sensação de Segurança</h2>
+                <p>Muitos devs frontend acreditam que o Supabase lida com a segurança automaticamente. Errado. O
+                    Supabase é um <strong>PostgreSQL exposto via API</strong>. As regras de segurança do banco são
+                    responsabilidade <strong>sua</strong>.</p>
+            </section>
+
+            <section>
+                <h2>✅ A Solução de 15 Minutos</h2>
+                <p>Se você tem um projeto Supabase em produção, <strong>pare tudo e verifique estes pontos</strong>:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ação</th>
+                            <th>SQL Necessário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ative o Security Invoker</td>
+                            <td><code>ALTER VIEW nome_da_view ENABLE SECURITY INVOKER;</code></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Bloqueie Escrita em Views</td>
+                            <td><code>REVOKE INSERT, UPDATE ON nome_view FROM anon;</code></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ative o RLS</td>
+                            <td><code>ALTER TABLE orders ENABLE ROW LEVEL SECURITY;</code></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Crie Políticas Estritas</td>
+                            <td><code>CREATE POLICY "own_orders" ON orders FOR ALL USING (auth.uid() = user_id);</code>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Exemplo de Política Segura (RLS)</h3>
+                <pre><code>-- Apenas o usuário que está logado pode ver seus próprios pedidos.
+CREATE POLICY "own_orders" 
+ON orders 
+FOR ALL 
+USING (auth.uid() = user_id);</code></pre>
+
+                <div class="highlight-box success">
+                    <strong>Conclusão:</strong> A segurança é um contrato compartilhado. O Supabase oferece a
+                    infraestrutura, mas você deve configurar as regras. Não deixe que a conveniência se torne sua maior
+                    vulnerabilidade.
+                </div>
+            </section>
+
+            <section>
+                <h2>🤖 Um Aviso para Desenvolvedores "AI-Native"</h2>
+                <p>Se você está usando ferramentas de IA como <strong>Github Copilot, Cursor ou ChatGPT</strong> para
+                    gerar suas migrações SQL no Supabase, preste atenção redobrada.</p>
+
+                <p>A Inteligência Artificial é treinada em vastos repositórios de código open-source. O problema? Uma
+                    parte significativa desses tutoriais e exemplos antigos <strong>não utiliza as melhores práticas de
+                        segurança</strong> por padrão.</p>
+
+                <div class="highlight-box warning">
+                    <strong>A Armadilha da IA:</strong> Ao pedir para gerar uma View, a IA frequentemente sugere:
+                    <br><br>
+                    <code>CREATE VIEW public_profiles AS SELECT * FROM profiles;</code>
+                    <br><br>
+                    <strong>O que ela esqueceu?</strong> A cláusula <code>WITH (security_invoker=true)</code>.
+                </div>
+
+                <p>Sem essa linha crítica, a View é criada com os privilégios do "Definidor" (você, o admin), ignorando
+                    completamente as políticas RLS que você configurou com tanto cuidado na tabela <code>profiles</code>
+                    subjacente. Isso significa que qualquer usuário anônimo consultando essa View verá <strong>todos os
+                        dados</strong>, independentemente das suas regras de <code>auth.uid()</code>.</p>
+
+                <h3>A Cadeia de Exploração (Como você será hackeado)</h3>
+                <ol style="color:var(--text-muted); padding-left:20px; margin-bottom:20px;">
+                    <li style="margin-bottom:15px;"><strong>O Reconhecimento:</strong> O atacante inspeciona seu arquivo
+                        `types.ts` vazado ou usa a API de Introspecção do Supabase para listar Views. Ele encontra
+                        `public_users`.</li>
+                    <li style="margin-bottom:15px;"><strong>O Teste:</strong> Ele envia um `GET /rest/v1/public_users`
+                        autenticado apenas com a chave `anon`.</li>
+                    <li style="margin-bottom:15px;"><strong>A Falha:</strong> O Postgres executa a query como o "Dono da
+                        View" (postgres/admin), ignora o RLS da tabela `users`, e retorna o banco inteiro.</li>
+                    <li><strong>O Impacto:</strong> Vazamento massivo de PII e potencial ATO.</li>
+                </ol>
+
+                <p>Não confie cegamente no output da IA. Trate o código gerado como um estagiário júnior: reviste linha
+                    por linha, especialmente quando se trata de ACLs (Access Control Lists) e RLS.</p>
+
+                <hr style="border-color:var(--border-dim); margin-top:40px; margin-bottom:40px;">
+
+                <div style="text-align:center;">
+                    <p style="font-size:1.1rem; margin-bottom:20px;">Quer entender mais sobre como o cenário de
+                        segurança cibernética está mudando com a IA?</p>
+                    <a href="cyber-intelligence-report-2025.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block; font-size:1rem; padding:15px 30px;">
+                        LER RELATÓRIO DE INTELIGÊNCIA 2025 >>
+                    </a>
+                </div>
+            </section>
+
+        </article>
+
+        <footer>
+            <div
+                style="margin-top: 50px; border-top: 1px solid var(--border-dim); padding-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+                <p>RedRecon Blog © 2025</p>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

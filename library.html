@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedRecon | Biblioteca de Segurança</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .resource-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--dim-color);
+            padding: 20px;
+            border-radius: 4px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .resource-type {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            display: inline-block;
+            padding: 2 px 6px;
+            border: 1px solid var(--primary-green);
+            border-radius: 2px;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .resource-desc {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo">
+            <span class="user-name">REDRECON DEV</span>
+            <span class="role">| Biblioteca de Recursos</span>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt active" data-lang="pt"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                <!-- Multi-lang support simplified for library for now -->
+            </div>
+            <div class="toggle-group">
+                <span class="label">VISUAL:</span>
+                <button id="theme-toggle" class="btn-toggle">MODO_HACKER</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">DASHBOARD</a>
+                <a href="library.html" class="active">BIBLIOTECA</a>
+                <a href="blog.html">BLOG</a>
+                <a href="profile.html" data-i18n="nav_about">PERFIL</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <section class="hero-summary">
+            <h1>Biblioteca de Conhecimento</h1>
+            <p style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                Acesso curado a recursos essenciais para profissionais de Offensive Security.
+                <br>Livros, whitepapers e guias técnicos gratuitos.
+            </p>
+        </section>
+
+        <div style="display:flex; justify-content:center; align-items:center; margin-top: 40px;">
+            <h2 style="color: var(--neon-red); font-family: var(--font-head); margin:0;" id="books">LIVROS RECOMENDADOS
+                (GRATUITOS)</h2>
+        </div>
+
+        <div class="library-grid">
+            <div class="resource-card">
+                <span class="resource-type">E-BOOK</span>
+                <div class="resource-title">The Web Application Hacker's Handbook</div>
+                <div class="resource-desc">
+                    Embora pago, existem versões de amostra e guias complementares gratuitos que cobrem os fundamentos
+                    de exploração web modernos.
+                </div>
+                <a href="#" class="btn secondary-btn">[RECURSO INDISPONÍVEL]</a>
+            </div>
+            <div class="resource-card">
+                <span class="resource-type">LIVRO OPEN SOURCE</span>
+                <div class="resource-title">OWASP Testing Guide v4</div>
+                <div class="resource-desc">
+                    O guia oficial da OWASP para testes de penetração em aplicações web. Essencial e totalmente
+                    gratuito.
+                </div>
+                <a href="#" class="btn primary-btn">[ACESSAR]</a>
+            </div>
+            <div class="resource-card">
+                <span class="resource-type">MANUAL</span>
+                <div class="resource-title">Red Team Field Manual (RTFM) - Reference</div>
+                <div class="resource-desc">
+                    Compilação de comandos e sintaxes úteis para operações de Red Team (Linux, Windows, Nmap, SQLMap).
+                </div>
+                <a href="#" class="btn primary-btn">[VER CHEATSHEET]</a>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; margin-top: 40px; color: var(--primary-red); font-family: var(--font-mono);"
+            id="pdfs">PDFs TÉCNICOS & RELATÓRIOS</h2>
+        <div class="library-grid">
+            <div class="resource-card">
+                <span class="resource-type">WHITEPAPER</span>
+                <div class="resource-title">Google SRE Book - Security Chapters</div>
+                <div class="resource-desc">
+                    Capítulos selecionados sobre segurança em escala e infraestrutura confiável.
+                </div>
+                <a href="#" class="btn primary-btn">[DOWNLOAD PDF]</a>
+            </div>
+            <div class="resource-card">
+                <span class="resource-type">REPORT</span>
+                <div class="resource-title">Zine: Paged Out!</div>
+                <div class="resource-desc">
+                    Revista técnica experimental com artigos curtos sobre hacks, programação e engenharia reversa.
+                </div>
+                <a href="#" class="btn primary-btn">[LER ONLINE]</a>
+            </div>
+            <div class="resource-card">
+                <span class="resource-type">CHEATSHEET</span>
+                <div class="resource-title">Reverse Shell Cheat Sheet</div>
+                <div class="resource-desc">
+                    PDF de referência rápida para gerar shells reversos em diversas linguagens (Python, PHP, Bash, etc).
+                </div>
+                <a href="#" class="btn primary-btn">[DOWNLOAD]</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>RedRecon Library | <a href="index.html" style="color: var(--primary-red);">Voltar para Home</a></p>
+    </footer>
+
+    <!-- ADD RESOURCE MODAL -->
+    <div id="add-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="panel-header" style="color: var(--neon-green);">
+                ADD_NEW_RESOURCE // DATABASE_WRITE
+                <span id="close-modal" style="cursor:pointer; color: var(--neon-red);">[X]</span>
+            </div>
+            <form id="resource-form">
+                <div class="input-group">
+                    <label class="input-label">RESOURCE TYPE</label>
+                    <select class="input-field" style="border-radius:0;">
+                        <option>E-BOOK</option>
+                        <option>PDF REPORT</option>
+                        <option>CHEATSHEET</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">TITLE</label>
+                    <input type="text" class="input-field" placeholder="Ex: The Art of Exploitation">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">URL / PATH</label>
+                    <input type="text" class="input-field" placeholder="https://...">
+                </div>
+                <div style="text-align:right; margin-top:30px;">
+                    <button type="button" class="btn" id="btn-cancel" style="margin-right:10px;">CANCEL</button>
+                    <button type="submit" class="btn btn-run">INJECT DATA</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

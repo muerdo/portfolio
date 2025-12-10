@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Essencial para o Active Directory e Red Team | RedRecon Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-header {
+            border-bottom: 2px solid var(--neon-red);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .blog-header h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #ddd;
+        }
+
+        .highlight-box.important {
+            border-left-color: var(--neon-red);
+        }
+
+        .nav-back {
+            margin-bottom: 30px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+
+        .nav-back a:hover {
+            color: var(--neon-cyan);
+        }
+
+        h2 {
+            color: var(--neon-green);
+            margin-top: 40px;
+            border-bottom: 1px solid var(--border-dim);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: white;
+            margin-top: 30px;
+            font-size: 1.3rem;
+        }
+
+        p {
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../blog.html">← VOLTAR PARA O BLOG</a>
+        </div>
+
+        <article>
+            <header class="blog-header">
+                <h1>O Essencial para o Active Directory e Red Team</h1>
+                <div style="color:var(--text-muted); font-family:var(--font-code); font-size:0.9rem;">
+                    <strong>TÓPICO:</strong> AD SECURITY // <strong>LEITURA:</strong> 5 MIN
+                </div>
+            </header>
+
+            <section>
+                <h2>Active Directory Red Team Specialist (AD-RTS)</h2>
+                <p>O Active Directory é a espinha dorsal de quase 90% das redes corporativas globais. Para um Red
+                    Teamer, dominar suas vulnerabilidades não é um luxo, mas uma necessidade.</p>
+                <p>Conheça o Active Directory Red Team Specialist (AD-RTS) e prepare-se para extrair credenciais,
+                    pivotar em redes e simular o impacto de ataques persistentes. O curso é focado em estratégias
+                    ofensivas e de exploração para elevar seu nível de atuação em ambientes Windows.</p>
+                <div class="highlight-box">
+                    🔗 <strong>Saiba mais e comece sua especialização aqui:</strong> <a
+                        href="https://cyberwarfare.live/product/active-directory-red-team-specialist-ad-rts/"
+                        target="_blank">cyberwarfare.live/product/active-directory-red-team-specialist-ad-rts/</a>
+                </div>
+            </section>
+
+            <section>
+                <h2>🕵️ Dia de um Red Teamer: Reconhecimento é a Chave</h2>
+                <div class="highlight-box">
+                    <strong>Reflexão:</strong> Passamos mais tempo em OSINT e Reconhecimento do que na exploração.
+                    Entender o alvo é 80% do trabalho.
+                </div>
+                <p>Esta é uma verdade fundamental para qualquer profissional ofensivo. A fase de <strong>OSINT (Open
+                        Source Intelligence)</strong> e Reconhecimento é onde a diferença entre um pentester júnior e um
+                    Red Teamer sênior é mais evidente. É a coleta paciente e metódica de informações publicamente
+                    disponíveis (desde redes sociais até metadados em arquivos) que constrói o mapa de ataque.</p>
+
+                <h3>Qual sua ferramenta de OSINT favorita?</h3>
+                <p>No Red Team, a eficiência e a discrição são vitais. Muitas vezes, a favorita é uma combinação de
+                    Google Dorks avançados e frameworks como Maltego ou Recon-ng, que automatizam a coleta e a
+                    correlação de dados.</p>
+
+                <h3>Destaque: Automação com RedRecon</h3>
+                <p>O valor de um bom script de enumeração, como o <strong>RedRecon</strong>, é inestimável. Ele otimiza
+                    aquela que seria a parte mais demorada, fornecendo uma visão rápida e enumerada do alvo, permitindo
+                    que o Red Teamer dedique mais tempo à análise e exploração tática.</p>
+            </section>
+
+            <section>
+                <h2>🔑 Kerberoasting: O Ataque Furtivo</h2>
+                <div class="highlight-box important">
+                    <strong>Reflexão:</strong> Kerberoasting é uma exploração onde o atacante extrai hashes de senhas de
+                    contas de serviço. Uma falha de configuração que pode ser fatal. #ADSecurity #Kerberos
+                </div>
+                <p>Kerberoasting é um ataque clássico, silencioso e extremamente eficaz no Active Directory. Ele explora
+                    o protocolo Kerberos e o fato de que as <strong>Service Principal Names (SPNs)</strong>—usadas por
+                    contas de serviço—não exigem que o cliente (o atacante) prove seu conhecimento da senha para
+                    solicitar o hash da senha da conta de serviço.</p>
+
+                <h3>O Risco</h3>
+                <p>Se uma conta de serviço tem uma senha fraca ou nunca alterada, o atacante pode obter o hash e
+                    crackear a senha offline, obtendo acesso de alto privilégio.</p>
+
+                <h3>Mitigação</h3>
+                <p>Exige senhas robustas e longas para contas de serviço, e monitoramento contínuo para detecção de
+                    solicitações incomuns de tíquetes Kerberos (TGS).</p>
+
+                <p><em>Fique ligado! Em breve, lançaremos um Relatório Detalhado da AD-RTS sobre Kerberoasting e outras
+                        técnicas ofensivas cruciais no Active Directory.</em></p>
+            </section>
+
+        </article>
+
+        <footer>
+            <div
+                style="margin-top: 50px; border-top: 1px solid var(--border-dim); padding-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+                <p>RedRecon Blog © 2025</p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

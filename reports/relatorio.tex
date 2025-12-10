@@ -1,0 +1,128 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+% --- Configuration ---
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\definecolor{primaryRed}{RGB}{200, 30, 30}
+\definecolor{darkGrey}{RGB}{50, 50, 50}
+\definecolor{lightGrey}{RGB}{240, 240, 240}
+
+% --- Styling ---
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textcolor{darkGrey}{\small RedRecon | Security Assessment}}
+\lhead{\textcolor{darkGrey}{\small CONFIDENTIAL}}
+\cfoot{\thepage}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{primaryRed}}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{darkGrey}}{\thesubsection}{1em}{}
+
+% --- Document ---
+\begin{document}
+
+% --- Cover Page ---
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    {\Huge \bfseries \textcolor{primaryRed}{Penetration Test Report}}\\[1cm]
+    {\Large Target Entity: {{TARGET_NAME}}}\\[0.5cm]
+    {\large Date: \today}\\[3cm]
+    
+    \textbf{Prepared by:}\\[0.2cm]
+    RedRecon Automated Engine\\[0.2cm]
+    \textit{Simulated Security Division}
+    
+    \vfill
+    \begin{center}
+    \fbox{\parbox{0.8\textwidth}{\centering \small \textbf{DISCLAIMER:} This document contains confidential security findings. Distribution should be restricted to authorized personnel only.}}
+    \end{center}
+\end{titlepage}
+
+% --- One-Page Executive Summary ---
+\newpage
+\section*{Executive Summary}
+\addcontentsline{toc}{section}{Executive Summary}
+
+This assessment evaluated the security posture of \textbf{ {{TARGET_NAME}} } against modern attack vectors. The automatic execution of RedRecon identified critical exposure points that could compromise data integrity and service availability.
+
+\subsection*{Business Impact Assessment}
+The findings indicate a \textbf{HIGH} overall risk rating. The identified attack chain allows an external attacker to pivot from a low-severity leak to full internal network access.
+
+\begin{itemize}
+    \item \textbf{Potential Financial Loss:} Estimated \$150k - \$500k (Data Breach / GDPR Fines).
+    \item \textbf{Estimated Mitigation Cost:} < \$5k (Configuration Changes \& Patching).
+    \item \textbf{ROI of Fix:} High (Immediate Risk Reduction).
+\end{itemize}
+
+\subsection*{Key Findings Summary}
+\begin{itemize}
+    \item \textbf{Critical:} {{CRITICAL_COUNT}} vulnerabilities identified (Immediate Action Required).
+    \item \textbf{High:} {{HIGH_COUNT}} vulnerabilities identified.
+    \item \textbf{Total Issues:} {{TOTAL_COUNT}} unique security events processed.
+\end{itemize}
+
+\subsection*{Strategic Recommendations}
+\begin{enumerate}
+    \item \textbf{Immediate Patching:} Apply security updates to the identified web application frameworks.
+    \item \textbf{Network Segregation:} Isolate the database layer from direct public access.
+    \item \textbf{WAF Implementation:} Deploy a Web Application Firewall to filter malicious traffic patterns.
+\end{enumerate}
+
+% --- Risk Matrix ---
+\vspace{1cm}
+\subsection*{Risk Assessment Matrix}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \rowcolor{lightGrey} \textbf{Likelihood / Impact} & \textbf{Low} & \textbf{Medium} & \textbf{High} \\
+    \hline
+    \textbf{High} & Medium & High & \cellcolor{primaryRed!30}\textbf{Critical} \\
+    \hline
+    \textbf{Medium} & Low & Medium & High \\
+    \hline
+    \textbf{Low} & Low & Low & Medium \\
+    \hline
+\end{tabular}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+
+% --- Methodology ---
+\section{Methodology}
+The assessment followed a structured "Black Box" approach, simulating an external attacker's perspective:
+
+\begin{enumerate}
+    \item \textbf{Reconnaissance:} Passive data gathering (WHOIS, DNS, OSINT).
+    \item \textbf{Enumeration:} Active discovery of services, ports, and endpoints.
+    \item \textbf{Vulnerability Analysis:} Automated scanning for known CVEs and misconfigurations.
+    \item \textbf{Validation:} (Simulated) Manual verification of detected flaws to eliminate false positives.
+\end{enumerate}
+
+% --- Detailed Findings ---
+\section{Technical Findings & Simulated Impact}
+
+\textit{Note: The following findings are based on a simulated exploration path utilizing the "Dante Chain" methodology.}
+
+{{VULN_ITEMS}}
+
+\newpage
+\section{Appendix: Exploration Evidence}
+\subsection{Automated Chain Logs}
+\begin{verbatim}
+{{LOG_EXTRACT}}
+\end{verbatim}
+
+\end{document}

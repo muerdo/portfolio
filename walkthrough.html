@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedRecon | Walkthrough Estratégico</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Mermaid JS for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            fontFamily: 'Inter'
+        });
+    </script>
+    <script src="js/mock_data.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Default logic for this page specific overrides
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure it starts in pro mode as hardcoded in body class but update button text
+            const tBtn = document.getElementById('theme-toggle');
+            if (document.body.classList.contains('professional-mode')) {
+                tBtn.textContent = "MODO_PROFISSIONAL";
+                tBtn.classList.add('active');
+            }
+        });
+    </script>
+</head>
+
+<body class="professional-mode">
+
+    <nav class="top-nav">
+        <div class="logo">
+            <span class="user-name">REDRECON DEV</span>
+            <span class="role">| Walkthrough Técnico</span>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt active" data-lang="pt"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">PT</span>
+                <span class="lang-opt" data-lang="en"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">EN</span>
+            </div>
+            <div class="toggle-group">
+                <span class="label" data-i18n="lbl_visual">VISUAL:</span>
+                <button id="theme-toggle" class="btn-toggle">MODO_PROFISSIONAL</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">DASHBOARD</a>
+                <a href="library.html">BIBLIOTECA</a>
+                <a href="blog.html">BLOG</a>
+                <a href="profile.html" data-i18n="nav_about">PERFIL</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container" style="max-width: 900px; margin: 0 auto; padding-top: 40px;">
+
+        <!-- INTRO -->
+        <section class="walkthrough-section">
+            <h1>Por Dentro da Estratégia</h1>
+            <p>
+                Bem-vindo aos bastidores. Muitas ferramentas apenas "rodam". Eu projetei o RedRecon para
+                <strong>pensar</strong>.
+                Este walkthrough explica minha abordagem para transformar dados brutos em inteligência de risco,
+                utilizando uma arquitetura modular e orientada a eventos.
+            </p>
+            <div class="highlight-box">
+                <strong>O Desafio:</strong> Reduzir o ruído de milhares de logs. <br>
+                <strong>Minha Solução:</strong> Um mecanismo de correlação que só alerta o que realmente importa para o
+                negócio.
+            </div>
+        </section>
+
+        <!-- DIAGRAM 1: THE PARSER -->
+        <section class="walkthrough-section">
+            <h2>1. O Mecanismo de Parsing (A Inteligência)</h2>
+            <p>
+                O coração da ferramenta não é o scanner, é o <strong>Parser</strong>. Eu percebi que ferramentas como
+                Nmap e Nuclei geram outputs muito diversos.
+                Para unificá-los, criei um normalizador central.
+            </p>
+
+            <div class="diagram-container" style="background: #111; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4 style="text-align:center; color:#888; margin-bottom:10px;">FLUXO DE DADOS: DO CAOS À ESTRUTURA</h4>
+                <div class="mermaid">
+                    graph LR
+                    A[Scanner Bruto] -->|Texto/XML| B(Engine Regex)
+                    B -->|Extração| C{Normalizador}
+                    C -->|Padronização| D[Objeto JSON Unificado]
+                    D -->|Análise| E[Banco de Dados de Risco]
+                    style A fill:#333,stroke:#666
+                    style D fill:#2a4d2a,stroke:#4caf50
+                    style E fill:#4d2a2a,stroke:#f44336
+                </div>
+            </div>
+
+            <p>
+                Isso me permite tratar um CVE crítico e uma porta aberta com a mesma estrutura de dados, facilitando a
+                correlação posterior.
+            </p>
+        </section>
+
+        <!-- STEP 2: RISK ANALYSIS -->
+        <section class="walkthrough-section">
+            <h2>2. Análise de Risco e Matriz de Decisão</h2>
+            <p>
+                A automação cega é perigosa. Por isso, implementei uma <strong>Matriz de Risco Dinâmica</strong>.
+                Não olho apenas para a severidade técnica (CVSS), mas para o contexto.
+            </p>
+
+            <div class="diagram-container" style="background: #111; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4 style="text-align:center; color:#888; margin-bottom:10px;">LÓGICA DE PRIORIZAÇÃO</h4>
+                <div class="mermaid">
+                    graph TD
+                    Finding[Nova Descoberta] --> Context{É Exposta à Internet?}
+                    Context -- Sim --> HighRisk[Aumentar Criticidade]
+                    Context -- Não --> AvgRisk[Manter Score Base]
+                    HighRisk --> Chain{Faz parte de uma Chain?}
+                    Chain -- Sim --> CRITICAL[[ALERT] IMEDIATO]
+                    Chain -- Não --> REPORT[Relatório Diário]
+                    style CRITICAL fill:#770000,stroke:#ff0000,color:#fff
+                </div>
+            </div>
+
+            <p>
+                <strong>Exemplo Prático:</strong> Um servidor desatualizado na intranet é "Médio". O mesmo servidor
+                exposto ao público torna-se "Alto". Se houver credenciais vazadas para ele, torna-se "Crítico".
+            </p>
+        </section>
+
+        <!-- STEP 3: THE DANTE CHAIN -->
+        <section class="walkthrough-section">
+            <h2>3. Estudo de Caso: A "Cadeia Dante"</h2>
+            <p>
+                No Dashboard e no Relatório, você verá a detecção de um cenário real que simulei, apelidado de
+                <strong>"Dante Chain"</strong>.
+                Isso demonstra a capacidade do RedRecon de conectar pontos aparentemente inofensivos:
+            </p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li
+                    style="background: rgba(255,255,255,0.05); padding: 15px; margin-bottom: 10px; border-left: 3px solid #888;">
+                    <strong>1. Info Leak (Baixo):</strong> Encontramos um log de aplicação acessível
+                    <code>/var/log/app.log</code>. Isoladamente, apenas uma falha de configuração.
+                </li>
+                <li
+                    style="background: rgba(255,255,255,0.05); padding: 15px; margin-bottom: 10px; border-left: 3px solid orange;">
+                    <strong>2. Serviço Desatualizado (Médio):</strong> Detectamos um Tomcat Manager antigo na porta
+                    8080.
+                </li>
+                <li
+                    style="background: rgba(255,255,255,0.05); padding: 15px; margin-bottom: 10px; border-left: 3px solid var(--primary-red);">
+                    <strong>3. Acesso Não Autorizado (Crítico):</strong> O RedRecon extraiu credenciais do log (Passo 1)
+                    e testou no Tomcat (Passo 2). <strong>Sucesso.</strong>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SECTION 4: HOW TO -->
+        <section class="walkthrough-section">
+            <h2>4. Como Construir o Seu Próprio</h2>
+            <p>
+                Se você deseja replicar essa arquitetura, comece simples:
+            </p>
+            <ol class="step-list">
+                <li><strong>Escolha seu Wrapper:</strong> Python é ótimo para prototipar, Go para performance em escala.
+                </li>
+                <li><strong>Defina seu Output:</strong> JSON deve ser o padrão universal.</li>
+                <li><strong>Falhe Graciosamente:</strong> Se o Nmap travar, seu script deve continuar. Use
+                    <code>try/catch</code> robustos e timeouts.
+                </li>
+            </ol>
+        </section>
+
+        <!-- CTA -->
+        <section class="walkthrough-section" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+            <h3>Pronto para ver em ação?</h3>
+            <p>Volte ao Dashboard e execute a simulação para ver a "Dante Chain" sendo detectada em tempo real.</p>
+            <a href="index.html" class="btn primary-btn" style="display: inline-block; margin-top: 15px;">VOLTAR AO
+                DASHBOARD</a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>RedRecon Walkthrough | Documentação Técnica Oficial</p>
+    </footer>
+
+</body>
+
+</html>

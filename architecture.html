@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedRecon | Architecture & Design</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border: 1px solid #333;
+            margin: 10px 0;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .diagram-container {
+            background: var(--panel-bg);
+            border: 1px solid var(--dim-color);
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .sticky-toc {
+            position: sticky;
+            top: 20px;
+            background: var(--panel-bg);
+            border: 1px solid var(--dim-color);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .toc-link {
+            display: block;
+            margin: 10px 0;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .toc-link:hover {
+            color: var(--primary-red);
+        }
+
+        .toc-link.active {
+            font-weight: bold;
+            border-left: 2px solid var(--primary-red);
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo">
+            <span class="user-name">REDRECON DEV</span>
+            <span class="role">| Architecture Deep Dive</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">DASHBOARD</a>
+            <a href="architecture.html">ARCHITECTURE</a>
+        </div>
+    </nav>
+
+    <div class="main-container" style="display: grid; grid-template-columns: 250px 1fr; gap: 30px;">
+
+        <!-- Sidebar / TOC -->
+        <aside>
+            <div class="sticky-toc">
+                <h3 style="color:var(--primary-red); margin-top:0;">INDEX</h3>
+                <a href="#philosophy" class="toc-link">Design Philosophy</a>
+                <a href="#diagram" class="toc-link">System Flow</a>
+                <a href="#snippets" class="toc-link">Code Implementation</a>
+                <a href="#roadmap" class="toc-link">Future Roadmap</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+
+            <section id="philosophy" class="panel">
+                <div class="panel-header">Why RedRecon?</div>
+                <p>
+                    Traditional recon tools are noisy and serial. RedRecon was built with a <strong>"Quiet &
+                        Parallel"</strong>
+                    philosophy. By decoupling the scanning agents from the main controller via a message queue (mocked),
+                    we achieve horizontal scaling without IP burning.
+                </p>
+                <table class="tech-table" style="margin-top:20px;">
+                    <tr>
+                        <th>Component</th>
+                        <th>Choice</th>
+                        <th>Rationale</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Orchestrator</strong></td>
+                        <td>Go (Golang)</td>
+                        <td>Concurrency primitives (Goroutines) allow managing thousands of proxy connections with
+                            minimal overhead.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parser</strong></td>
+                        <td>Python</td>
+                        <td>Rich ecosystem for parsing complex XML/JSON outputs from tools like Nmap and Nuclei.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section id="diagram" class="diagram-container">
+                <div class="panel-header" style="text-align:left;">Architecture Diagram</div>
+                <!-- Simple CSS/SVG Diagram Representation -->
+                <svg width="100%" height="200" viewBox="0 0 600 200">
+                    <!-- CLI -->
+                    <rect x="10" y="80" width="80" height="40" fill="#333" stroke="#ff3333" stroke-width="2" />
+                    <text x="50" y="105" text-anchor="middle" fill="white" font-size="12">CLI / User</text>
+
+                    <!-- Orchestrator -->
+                    <rect x="150" y="50" width="100" height="100" fill="#111" stroke="#33ff33" stroke-width="2" />
+                    <text x="200" y="105" text-anchor="middle" fill="white" font-size="12">Orchestrator</text>
+
+                    <!-- Proxies -->
+                    <rect x="300" y="20" width="80" height="40" fill="#222" stroke="gray" />
+                    <text x="340" y="45" text-anchor="middle" fill="white" font-size="10">Proxy A</text>
+                    <rect x="300" y="80" width="80" height="40" fill="#222" stroke="gray" />
+                    <text x="340" y="105" text-anchor="middle" fill="white" font-size="10">Proxy B</text>
+                    <rect x="300" y="140" width="80" height="40" fill="#222" stroke="gray" />
+                    <text x="340" y="165" text-anchor="middle" fill="white" font-size="10">Proxy C</text>
+
+                    <!-- Target -->
+                    <circle cx="500" cy="100" r="40" fill="#440000" stroke="#ff3333" />
+                    <text x="500" y="105" text-anchor="middle" fill="white" font-size="12">Target</text>
+
+                    <!-- Lines -->
+                    <line x1="90" y1="100" x2="150" y2="100" stroke="white" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="250" y1="100" x2="300" y2="40" stroke="#33ff33" stroke-width="1" />
+                    <line x1="250" y1="100" x2="300" y2="100" stroke="#33ff33" stroke-width="1" />
+                    <line x1="250" y1="100" x2="300" y2="160" stroke="#33ff33" stroke-width="1" />
+                    <line x1="380" y1="40" x2="460" y2="80" stroke="gray" stroke-dasharray="4" />
+                    <line x1="380" y1="100" x2="460" y2="100" stroke="gray" stroke-dasharray="4" />
+                    <line x1="380" y1="160" x2="460" y2="120" stroke="gray" stroke-dasharray="4" />
+                </svg>
+                <p style="color:#888; font-size:0.8rem; margin-top:10px;">Figure 1: High-level Multi-Proxy Routing Flow
+                </p>
+            </section>
+
+            <section id="snippets" class="panel">
+                <div class="panel-header">Code Implementation</div>
+
+                <p><strong>Example 1: Smart Proxy Rotation (Golang)</strong></p>
+                <div class="code-block">
+                    <span class="keyword">func</span> (p *ProxyRotator) GetNext() (<span class="keyword">string</span>,
+                    error) {
+                    p.mu.Lock()
+                    <span class="keyword">defer</span> p.mu.Unlock()
+
+                    <span class="comment">// Round-robin selection with health check</span>
+                    <span class="keyword">for</span> i := 0; i < len(p.Pool); i++ { candidate :=p.Pool[p.current]
+                        p.current=(p.current + 1) % len(p.Pool) <span class="keyword">if</span> p.IsHealthy(candidate) {
+                        <span class="keyword">return</span> candidate, nil
+                        }
+                        }
+                        <span class="keyword">return</span> "", errors.New(<span class="string">"no healthy proxies
+                            available"</span>)
+                        }
+                </div>
+
+                <p><strong>Example 2: Dockerized Environment</strong></p>
+                <div class="code-block">
+                    <span class="keyword">FROM</span> python:3.9-slim
+                    <span class="keyword">WORKDIR</span> /app
+                    <span class="keyword">COPY</span> requirements.txt .
+                    <span class="keyword">RUN</span> pip install -r requirements.txt
+                    <span class="comment"># Install native dependencies for Nmap/Masscan</span>
+                    <span class="keyword">RUN</span> apt-get update && apt-get install -y nmap
+                    <span class="keyword">COPY</span> . .
+                    <span class="keyword">CMD</span> [<span class="string">"python"</span>, <span
+                        class="string">"agent.py"</span>]
+                </div>
+            </section>
+
+            <section id="roadmap" class="panel">
+                <div class="panel-header">Future Roadmap</div>
+                <ul style="line-height:1.6;">
+                    <li>[Q1 2026] Integration with ELK Stack for log aggregation.</li>
+                    <li>[Q2 2026] ML-based WAF evasion (training on response codes).</li>
+                    <li>[Q3 2026] Automated Exploit verification (Auto-training).</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>RedRecon Deployment | CI/CD Status: <span style="color:var(--primary-green)">PASSING</span></p>
+    </footer>
+
+</body>
+
+</html>
