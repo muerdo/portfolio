@@ -71,9 +71,33 @@
 
     <div class="main-container" style="max-width: 900px;">
 
-        <div class="nav-back">
-            <a href="../blog.html">← VOLTAR PARA O BLOG</a>
-        </div>
+        <nav class="top-nav">
+            <div class="logo" style="display:flex; align-items:center; gap:10px;">
+                <img src="../img/redsec_alliance.png" alt="RedSec Logo" style="height:40px; width:auto;">
+                <div style="display:flex; flex-direction:column; line-height:1.1;">
+                    <span class="user-name" style="font-size:1.2rem; letter-spacing:1px;">REDSEC INTELLIGENCE</span>
+                    <span class="role" style="font-size:0.7rem; color:var(--text-muted);">OFFENSIVE SECURITY
+                        RESEARCH</span>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="toggle-group" style="margin-right: 15px;">
+                    <span class="lang-opt active" data-lang="pt"
+                        style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                    <span class="lang-opt" data-lang="en"
+                        style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
+                </div>
+                <div class="toggle-group">
+                    <button id="theme-toggle" class="btn-toggle">MODO_HACKER</button>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html">DASHBOARD</a>
+                    <a href="../library.html">BIBLIOTECA</a>
+                    <a href="../blog.html">BLOG</a>
+                    <a href="../profile.html" data-i18n="nav_about">PERFIL</a>
+                </div>
+            </div>
+        </nav>
 
         <article>
             <header class="blog-header">

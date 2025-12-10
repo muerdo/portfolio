@@ -14,9 +14,12 @@
 <body class="hacker-mode">
 
     <nav class="top-nav">
-        <div class="logo">
-            <span class="user-name">DANT3 </span>
-            <span class="role">| Blog & Artigos</span>
+        <div class="logo" style="display:flex; align-items:center; gap:10px;">
+            <img src="img/redsec_alliance.png" alt="RedSec Logo" style="height:40px; width:auto;">
+            <div style="display:flex; flex-direction:column; line-height:1.1;">
+                <span class="user-name" style="font-size:1.2rem; letter-spacing:1px;">REDSEC INTELLIGENCE</span>
+                <span class="role" style="font-size:0.7rem; color:var(--text-muted);">OFFENSIVE SECURITY RESEARCH</span>
+            </div>
         </div>
         <div class="controls">
             <div class="toggle-group" style="margin-right: 15px;">
@@ -109,6 +112,67 @@
                 </div>
             </article>
 
+            <!-- Article 2: AD Certification -->
+            <article class="blog-card" onclick="window.location.href='blog/ad-rts-review.html'">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-green);">📅 DEZ 2025</span> |
+                        <span style="color:var(--neon-green);">📡 AD SECURITY</span> |
+                        <span style="color:var(--neon-cyan);">🔥 CERTIFICATION</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary); font-size: 1.5rem;">
+                        Active
+                        Directory Red Team Specialist (AD-RTS)</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        Um review completo da certificação e do curso da CyberWarfare Labs. O que esperar dos
+                        laboratórios e do exame.
+                    </div>
+                    <a href="blog/ad-rts-review.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER ARTIGO &gt;&gt;</a>
+                </div>
+            </article>
+
+            <!-- Article 3: Recon -->
+            <article class="blog-card" onclick="window.location.href='blog/red-team-recon.html'">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-cyan);">📅 DEZ 2025</span> |
+                        <span style="color:var(--neon-cyan);">📡 OSINT</span> |
+                        <span style="color:var(--neon-blue);">🔥 RECON</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary); font-size: 1.5rem;">Why
+                        Reconnaissance Dominates Red Teaming</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        Por que 80% do trabalho é recon? Ferramentas essenciais como Maltego, Shodan e técnicas de OSINT
+                        modernas.
+                    </div>
+                    <a href="blog/red-team-recon.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER ARTIGO &gt;&gt;</a>
+                </div>
+            </article>
+
+            <!-- Article 4: Kerberoasting -->
+            <article class="blog-card" onclick="window.location.href='blog/kerberoasting-attack.html'">
+                <div style="padding: 25px;">
+                    <div class="blog-meta"
+                        style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px; font-family:var(--font-code);">
+                        <span style="color:var(--neon-red);">📅 DEZ 2025</span> |
+                        <span style="color:var(--neon-red);">📡 AD EXPLOITATION</span> |
+                        <span style="color:var(--neon-orange);">🔥 ATTACK</span>
+                    </div>
+                    <h2 class="blog-title" style="margin-bottom:15px; color:var(--text-primary); font-size: 1.5rem;">
+                        Kerberoasting:
+                        The Silent Threat</h2>
+                    <div class="blog-excerpt" style="margin-bottom:20px; color:var(--text-primary); opacity:0.9;">
+                        Entenda a mecânica do ataque, como extrair hashes de Service Accounts e, principalmente, como
+                        mitigar.
+                    </div>
+                    <a href="blog/kerberoasting-attack.html" class="btn btn-run"
+                        style="text-decoration:none; display:inline-block;">LER ARTIGO &gt;&gt;</a>
+                </div>
+            </article>
             <!-- Article 1 -->
             <article class="panel blog-card" style="padding:0;">
                 <div style="padding: 25px;">

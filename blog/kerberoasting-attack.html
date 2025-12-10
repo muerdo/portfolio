@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerberoasting: The Silent Threat in Active Directory | RedRecon Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-header {
+            border-bottom: 2px solid var(--neon-red);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .blog-header h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .highlight-box {
+            background: rgba(255, 42, 42, 0.05);
+            border-left: 4px solid var(--neon-red);
+            padding: 20px;
+            margin: 30px 0;
+            color: #ddd;
+        }
+
+        .highlight-box.defense {
+            border-left-color: var(--neon-green);
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .nav-back {
+            margin-bottom: 30px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+
+        article {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        h2 {
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--neon-red);
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: white;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        code {
+            background: #222;
+            padding: 2px 5px;
+            font-family: var(--font-code);
+            color: var(--neon-red);
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.3);
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-dim);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 42, 42, 0.1);
+            color: var(--neon-red);
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo" style="display:flex; align-items:center; gap:10px;">
+            <img src="../img/redsec_alliance.png" alt="RedSec Logo" style="height:40px; width:auto;">
+            <div style="display:flex; flex-direction:column; line-height:1.1;">
+                <span class="user-name" style="font-size:1.2rem; letter-spacing:1px;">REDSEC INTELLIGENCE</span>
+                <span class="role" style="font-size:0.7rem; color:var(--text-muted);">OFFENSIVE SECURITY RESEARCH</span>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt active" data-lang="pt"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                <span class="lang-opt" data-lang="en"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
+            </div>
+            <div class="toggle-group">
+                <button id="theme-toggle" class="btn-toggle">MODO_HACKER</button>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">DASHBOARD</a>
+                <a href="../library.html">BIBLIOTECA</a>
+                <a href="../blog.html">BLOG</a>
+                <a href="../profile.html" data-i18n="nav_about">PERFIL</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../blog.html">← VOLTAR PARA O BLOG</a>
+        </div>
+
+        <article>
+            <header class="blog-header">
+                <h1>Kerberoasting: The Silent Threat in Active Directory Environments</h1>
+                <div style="color: var(--text-muted); font-family: var(--font-code); font-size: 0.9rem;">
+                    <span>AD EXPLOITATION</span> | <span>15 MIN READ</span> | <span>DEEMB 2025</span>
+                </div>
+            </header>
+
+            <div class="highlight-box">
+                <h3>Pontos Principais</h3>
+                <ul>
+                    <li><strong>Definição Básica:</strong> Técnica de pós-exploração que extrai hashes de contas de
+                        serviço (SPNs) explorando o protocolo Kerberos.</li>
+                    <li><strong>Riscos:</strong> Roubo de credenciais, movimento lateral e escalada de privilégios.</li>
+                    <li><strong>Facilidade:</strong> Qualquer usuário autenticado pode solicitar tickets TGS sem
+                        privilégios elevados.</li>
+                    <li><strong>Mitigação:</strong> Senhas >25 chars, AES 256, monitoramento do Event ID 4769 e uso de
+                        gMSAs.</li>
+                </ul>
+            </div>
+
+            <p><strong>Kerberoasting</strong> representa uma das ameaças mais sutis e persistentes em ambientes de rede
+                baseados no Microsoft Active Directory (AD). Identificada como uma forma de roubo de credenciais
+                (Tática: Credential Access, Técnica T1558 no MITRE ATT&CK), essa técnica permite aos atacantes obter
+                credenciais privilegiadas sem gerar alertas imediatos. É amplamente utilizada por grupos de ransomware
+                como <strong>Akira</strong> e APTs como <strong>Nobelium</strong>.</p>
+
+            <h2>Contexto Histórico e Técnico</h2>
+            <p>O protocolo Kerberos, introduzido no Windows 2000, opera por meio de um Key Distribution Center (KDC).
+                Uma "feature" inerente ao seu design permite que qualquer usuário autenticado solicite um
+                Ticket-Granting Service (TGS) para serviços com SPNs registrados. Esses tickets são criptografados com o
+                hash da senha da conta de serviço. Atacantes extraem esses tickets e quebram os hashes offline
+                (brute-force), longe dos olhos do monitoramento em tempo real.</p>
+
+            <p>Relatórios como o <em>X-Force Threat Intelligence Index</em> indicam um aumento massivo nesses
+                incidentes, explorando ambientes legados e contas de serviço obsoletas.</p>
+
+            <h2>A Cadeia de Ataque Típica</h2>
+            <p>O ataque segue uma sequência lógica e discreta:</p>
+            <ol>
+                <li><strong>Comprometimento Inicial:</strong> Acesso a qualquer conta de usuário de domínio (via
+                    phishing, etc). Nenhum privilégio administrativo é necessário.</li>
+                <li><strong>Enumeração:</strong> Identificação de contas com SPNs não nulos usando
+                    <code>BloodHound</code>, <code>PowerView</code> ou consultas LDAP.
+                    <br><code>Get-NetUser -SPN | select samaccountname, serviceprincipalname</code>
+                </li>
+                <li><strong>Solicitação de Tickets (TGS):</strong> Uso de ferramentas como <code>Rubeus</code> ou
+                    <code>GetUserSPNs.py</code> (Impacket) para pedir tickets ao KDC.</li>
+                <li><strong>Extração:</strong> Dump dos tickets da memória (formato Kirbi ou ccache).</li>
+                <li><strong>Quebra Offline:</strong> Uso de <code>Hashcat</code> (modo 13100) ou
+                    <code>John the Ripper</code>. Criptografias fracas como <strong>RC4-HMAC</strong> (tipo 0x17) são
+                    quebradas em horas.</li>
+                <li><strong>Exploração:</strong> Com a senha em texto claro, o atacante realiza login, movimento lateral
+                    ou persistência (Silver Tickets).</li>
+            </ol>
+
+            <div class="highlight-box defense">
+                <h3>Estratégias de Prevenção e Mitigação</h3>
+                <p>Para se defender, adote uma abordagem em camadas:</p>
+                <ul>
+                    <li><strong>Higiene de Senhas:</strong> Use senhas com mais de 25 caracteres para contas de serviço
+                        não gerenciadas.</li>
+                    <li><strong>gMSAs/dMSAs:</strong> Migre para <em>Group Managed Service Accounts</em>. Elas
+                        rotacionam senhas de 120 caracteres automaticamente, tornando a quebra inviável.</li>
+                    <li><strong>Criptografia:</strong> Desative RC4 via GPO e force o uso de AES-128/256.</li>
+                    <li><strong>Monitoramento:</strong> Audite o Event ID <strong>4769</strong> (Kerberos Service Ticket
+                        Operations). Procure por anomalias como:
+                        <ul>
+                            <li>Criptografia fraca (Ticket Encryption Type: 0x17).</li>
+                            <li>Volumes altos de solicitações de TGS partindo de um único host/usuário.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>Resumo das Ferramentas e Táticas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Estratégia</th>
+                        <th>Descrição</th>
+                        <th>Ferramentas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Senhas Robustas</strong></td>
+                        <td>Senhas >25 chars, complexas.</td>
+                        <td>gMSAs, Scripts PowerShell</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Criptografia</strong></td>
+                        <td>Desativar RC4, forçar AES.</td>
+                        <td>Group Policy (GPO)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Menor Privilégio</strong></td>
+                        <td>Remover SPNs desnecessários.</td>
+                        <td>BloodHound, Purple Knight</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monitoramento</strong></td>
+                        <td>Alertar Event ID 4769 (RC4).</td>
+                        <td>SIEM (Splunk, Log360), MDI</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Exemplos Reais de Impacto</h2>
+            <p><strong>SolarWinds (2020):</strong> O grupo APT29 usou Kerberoasting para escalar privilégios e se mover
+                lateralmente em redes governamentais.</p>
+            <p><strong>Akira Ransomware (2024):</strong> Extorquiu milhões utilizando a técnica para persistência após o
+                acesso inicial.</p>
+
+            <p style="margin-top:40px; margin-bottom: 5px; font-weight: bold;">Referências & Leitura Complementar:</p>
+            <ul style="font-size: 0.9rem; color: var(--text-muted);">
+                <li><a href="https://www.microsoft.com/en-us/security/blog/2024/10/11/microsofts-guidance-to-help-mitigate-kerberoasting/"
+                        target="_blank" style="color:var(--neon-cyan);">Microsoft’s Guidance to Mitigate
+                        Kerberoasting</a></li>
+                <li><a href="https://attack.mitre.org/techniques/T1558/003/" target="_blank"
+                        style="color:var(--neon-cyan);">MITRE ATT&CK: Steal or Forge Kerberos Tickets</a></li>
+                <li><a href="https://netwrix.com/pt/cybersecurity-glossary/cyber-security-attacks/kerberoasting/"
+                        target="_blank" style="color:var(--neon-cyan);">Netwrix: Estratégias de Detecção</a></li>
+            </ul>
+
+        </article>
+    </div>
+</body>
+
+</html>

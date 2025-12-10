@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Grind: Why Reconnaissance Dominates Red Teaming | RedRecon Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-header {
+            border-bottom: 2px solid var(--neon-cyan);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .blog-header h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .highlight-box {
+            background: rgba(0, 243, 255, 0.05);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 20px;
+            margin: 30px 0;
+            color: #ddd;
+        }
+
+        .nav-back {
+            margin-bottom: 30px;
+            font-family: var(--font-code);
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+
+        article {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        h2 {
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--neon-cyan);
+            padding-left: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-dim);
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="hacker-mode">
+
+    <nav class="top-nav">
+        <div class="logo" style="display:flex; align-items:center; gap:10px;">
+            <img src="../img/redsec_alliance.png" alt="RedSec Logo" style="height:40px; width:auto;">
+            <div style="display:flex; flex-direction:column; line-height:1.1;">
+                <span class="user-name" style="font-size:1.2rem; letter-spacing:1px;">REDSEC INTELLIGENCE</span>
+                <span class="role" style="font-size:0.7rem; color:var(--text-muted);">OFFENSIVE SECURITY RESEARCH</span>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="toggle-group" style="margin-right: 15px;">
+                <span class="lang-opt active" data-lang="pt"
+                    style="cursor:pointer; opacity:1.0; font-size:1.2rem; margin-right:5px;">🇧🇷</span>
+                <span class="lang-opt" data-lang="en"
+                    style="cursor:pointer; opacity:0.4; font-size:1.2rem; margin-right:5px;">🇺🇸</span>
+            </div>
+            <div class="toggle-group">
+                <button id="theme-toggle" class="btn-toggle">MODO_HACKER</button>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">DASHBOARD</a>
+                <a href="../library.html">BIBLIOTECA</a>
+                <a href="../blog.html">BLOG</a>
+                <a href="../profile.html" data-i18n="nav_about">PERFIL</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container" style="max-width: 900px;">
+
+        <div class="nav-back">
+            <a href="../blog.html">← VOLTAR PARA O BLOG</a>
+        </div>
+
+        <article>
+            <header class="blog-header">
+                <h1>The Daily Grind of a Red Teamer: Why Reconnaissance Dominates</h1>
+                <div style="color: var(--text-muted); font-family: var(--font-code); font-size: 0.9rem;">
+                    <span>OSINT & RECON</span> | <span>12 MIN READ</span>
+                </div>
+            </header>
+
+            <div class="highlight-box">
+                <strong>Insight:</strong> In red team operations, the reconnaissance phase—encompassing OSINT—often
+                accounts for up to 80% of the work. This patience distinguishes junior pentesters from seniors.
+            </div>
+
+            <p>Research suggests that over 90% of Fortune 1000 companies rely on Active Directory for managing endpoints
+                and assets, making it a critical target. However, before touching AD, one must understand the external
+                perimeter. This phase involves patient collection of publicly available data from sources like social
+                media, metadata in files, and network details, building a comprehensive attack map.</p>
+
+            <h2>Essential Toolset</h2>
+            <p>Favorite tools among red teamers include combinations of Google Dorks for advanced searches, Maltego for
+                automating correlation from over 58 data sources like AlienVault OTX and VirusTotal, and Recon-ng for
+                modular web reconnaissance.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Description</th>
+                        <th>Applicability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Maltego</strong></td>
+                        <td>Accesses 58+ data sources for visualization.</td>
+                        <td>Automates correlation in recon phase.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recon-ng</strong></td>
+                        <td>Command-line tool with installable modules.</td>
+                        <td>Saves time on online research modules.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shodan</strong></td>
+                        <td>Searches Internet-connected devices.</td>
+                        <td>Identifies vulnerabilities geographically.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>theHarvester</strong></td>
+                        <td>Gathers emails, hosts from Bing/VT.</td>
+                        <td>Explores DNS links for subdomains.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Advanced Tactics</h2>
+            <p>Incorporating temporal analysis in OSINT helps predict behaviors, enhancing predictive assessments.
+                Physical recon can merge with OSINT for hybrid paths. Automation scripts like <code>HostEnum.ps1</code>
+                optimize time-consuming tasks, allowing focus on analysis.</p>
+
+            <p>Efficiency and discretion are paramount, as OSINT unlocks targeted attacks by exploiting organizational
+                data without alerting defenses early in the kill chain.</p>
+
+        </article>
+    </div>
+</body>
+
+</html>
